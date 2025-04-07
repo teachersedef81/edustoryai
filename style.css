@@ -148,5 +148,10 @@ body {
     margin-top: 0.5rem;
     display: none;
 }
-
+.select-wrapper {
+    overflow: visible;
+    position: relative;
+    z-index: 10;
+  }
+  
 
