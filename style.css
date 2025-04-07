@@ -148,13 +148,11 @@ body {
     margin-top: 0.5rem;
     display: none;
 }
-select {
-    width: 100%;
-    height: auto; /* Boyutun daha esnek olmasını sağla */
+.select-wrapper {
+    max-width: 100%;
+    overflow: visible;
 }
-select {
-    appearance: none;
-}
+
 
   
   
