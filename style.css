@@ -148,10 +148,14 @@ body {
     margin-top: 0.5rem;
     display: none;
 }
-.select-wrapper {
-    overflow: visible;
-    position: relative;
-    z-index: 10;
-  }
+select {
+    width: 100%;
+    height: auto; /* Boyutun daha esnek olmasını sağla */
+}
+select {
+    appearance: none;
+}
+
+  
   
 
