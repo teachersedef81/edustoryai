@@ -80,4 +80,46 @@ body {
     color: #6e8efb;
 }
 
+@media (max-width: 640px) {
+    .story-card {
+        margin-bottom: 1rem;
+    }
+    .language-dropdown {
+        left: 0;
+        right: auto;
+    }
+}
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #1a1a1a;
+        color: #f0f0f0;
+    }
+    .story-card {
+        background-color: #2d2d2d;
+    }
+}
+
+.story-card {
+    will-change: transform, box-shadow;
+}
+
+#storyTitle:focus, #storyPrompt:focus {
+    border-color: #a777e3;
+    box-shadow: 0 0 0 3px rgba(167, 119, 227, 0.2);
+}
+
+.gradient-bg {
+    background: -webkit-linear-gradient(135deg, #6e8efb, #a777e3);
+    background: linear-gradient(135deg, #6e8efb, #a777e3);
+}
+
+#languageBtn:hover {
+    animation: pulse 0.5s ease;
+}
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
 
