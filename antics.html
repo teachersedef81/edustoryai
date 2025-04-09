@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zamanda Yolculuk | Time Travel Adventures</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .language-switch {
+            transition: all 0.3s ease;
+        }
+        .language-switch:hover {
+            transform: scale(1.05);
+        }
+        .story-container {
+            background-image: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
+            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.2);
+        }
+        .play-btn {
+            transition: all 0.2s ease;
+        }
+        .play-btn:hover {
+            transform: scale(1.1);
+        }
+        .time-portal {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(188,110,52,0.8) 0%, rgba(139,69,19,0.6) 50%, transparent 70%);
+            filter: blur(5px);
+            animation: pulse 4s infinite alternate;
+            pointer-events: none;
+            z-index: 1;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.7; }
+            100% { transform: scale(1.1); opacity: 0.9; }
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+        .artifact {
+            transition: all 0.3s ease;
+        }
+        .artifact:hover {
+            transform: scale(1.05) rotate(5deg);
+        }
+    </style>
+</head>
+<body class="bg-amber-50 min-h-screen">
+    <!-- Time portal effects -->
+    <div class="time-portal top-1/4 left-10"></div>
+    <div class="time-portal bottom-1/4 right-10" style="animation-delay: 1s;"></div>
+    
+    <div class="container mx-auto px-4 py-8 relative z-10">
+        <!-- Header with Language Switch -->
+        <header class="flex justify-between items-center mb-8">
+            <h1 class="text-4xl font-bold text-amber-800">
+                <span class="tr-lang">Zamanda Yolculuk</span>
+                <span class="en-lang hidden">Time Travel Adventures</span>
+            </h1>
+            <div class="flex space-x-2">
+                <button id="tr-btn" class="language-switch bg-amber-600 text-white px-4 py-2 rounded-full shadow-md">
+                    <i class="fas fa-language mr-2"></i>Türkçe
+                </button>
+                <button id="en-btn" class="language-switch bg-gray-600 text-white px-4 py-2 rounded-full shadow-md">
+                    <i class="fas fa-language mr-2"></i>English
+                </button>
+            </div>
+        </header>
+
+        <!-- Story Container -->
+        <div class="story-container rounded-xl p-6 mb-8 relative overflow-hidden">
+            <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?q=80&w=2070&auto=format&fit=crop')] opacity-10"></div>
+            
+            <div class="relative z-10">
+                <!-- Story Title -->
+                <h2 class="text-2xl font-semibold mb-4 text-amber-800">
+                    <span class="tr-lang">Antik Dünyaların Peşinde</span>
+                    <span class="en-lang hidden">In Search of Ancient Worlds</span>
+                </h2>
+                
+                <!-- Audio Controls -->
+                <div class="flex items-center mb-6 space-x-4">
+                    <button id="play-btn" class="play-btn bg-amber-600 text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg">
+                        <i class="fas fa-play text-xl"></i>
+                    </button>
+                    <div class="text-gray-600">
+                        <span class="tr-lang">Dinle</span>
+                        <span class="en-lang hidden">Listen</span>
+                    </div>
+                    <select id="voice-select" class="border border-gray-300 rounded px-3 py-1 ml-4">
+                        <option value="tr" class="tr-lang">Türkçe Ses</option>
+                        <option value="en" class="en-lang hidden">English Voice</option>
+                    </select>
+                    <div id="progress-container" class="flex-1 bg-gray-200 rounded-full h-2 hidden">
+                        <div id="progress-bar" class="bg-amber-600 h-2 rounded-full" style="width: 0%"></div>
+                    </div>
+                </div>
+                
+                <!-- Story Content -->
+                <div class="prose max-w-none text-gray-800">
+                    <div class="tr-lang">
+                        <p class="mb-4">Arkeolog Dr. Elif, laboratuvarında eski bir Mısır yüzüğünü incelerken aniden garip bir enerji hissetti. Yüzük parladı ve etrafında mavi bir ışık halkası oluştu. Kendini farklı bir zamanda, Antik Mısır'ın kalbinde buldu.</p>
+                        
+                        <p class="mb-4">Piramitlerin inşasına tanık oldu, mühendislik harikası bu yapıların sırlarını öğrendi. Firavun'un danışmanlarından biri olarak kabul edildi ve hiyerogliflerin gizemini çözmeye başladı.</p>
+                        
+                        <p class="mb-4">Yüzük onu daha sonra Antik Yunan'a götürdü. Atina'da Sokrates ile felsefe tartıştı, Olympia'da ilk Olimpiyat oyunlarını izledi. Parthenon'un inşasına tanık oldu ve demokrasinin doğuşunu gördü.</p>
+                        
+                        <p class="mb-4">Sonraki durağı Roma İmparatorluğu'ydu. Gladyatör dövüşlerini izledi, Roma hamamlarında sohbetlere katıldı. Mühendislik harikası su kemerlerini ve Colosseum'un ihtişamını hayranlıkla inceledi.</p>
+                        
+                        <p class="mb-4">Yolculuğu sırasında keşfettiği antik uygarlıklar:</p>
+                        
+                        <ul class="list-disc pl-6 mb-4">
+                            <li><strong>Mısır:</strong> Piramitler, mumyalama teknikleri, hiyeroglif yazı</li>
+                            <li><strong>Yunan:</strong> Felsefe, demokrasi, mimari ve sanat</li>
+                            <li><strong>Roma:</strong> Hukuk sistemi, mühendislik, yol ağları</li>
+                            <li><strong>Maya:</strong> Astronomi, matematik, takvim sistemi</li>
+                        </ul>
+                        
+                        <p>Modern dünyaya döndüğünde, antik uygarlıkların bize bıraktığı mirasın değerini daha iyi anladı. Bu bilgileri paylaşmak ve geçmişin sırlarını çözmek için yeni bir tutkuyla çalışmaya başladı.</p>
+                    </div>
+                    
+                    <div class="en-lang hidden">
+                        <p class="mb-4">While examining an ancient Egyptian ring in her lab, archaeologist Dr. Elif suddenly felt a strange energy. The ring glowed and a blue circle of light formed around her. She found herself in a different time, in the heart of Ancient Egypt.</p>
+                        
+                        <p class="mb-4">She witnessed the construction of the pyramids and learned the secrets of these engineering marvels. She was accepted as one of the pharaoh's advisors and began deciphering the mystery of hieroglyphs.</p>
+                        
+                        <p class="mb-4">The ring then took her to Ancient Greece. In Athens, she debated philosophy with Socrates, and in Olympia, she watched the first Olympic games. She witnessed the construction of the Parthenon and saw the birth of democracy.</p>
+                        
+                        <p class="mb-4">Her next stop was the Roman Empire. She watched gladiator fights, participated in conversations in Roman baths. She examined the engineering marvel of aqueducts and the magnificence of the Colosseum with admiration.</p>
+                        
+                        <p class="mb-4">The ancient civilizations she discovered during her journey:</p>
+                        
+                        <ul class="list-disc pl-6 mb-4">
+                            <li><strong>Egypt:</strong> Pyramids, mummification techniques, hieroglyphic writing</li>
+                            <li><strong>Greece:</strong> Philosophy, democracy, architecture and art</li>
+                            <li><strong>Rome:</strong> Legal system, engineering, road networks</li>
+                            <li><strong>Maya:</strong> Astronomy, mathematics, calendar system</li>
+                        </ul>
+                        
+                        <p>When she returned to the modern world, she better understood the value of the legacy left to us by ancient civilizations. She began working with new passion to share this knowledge and solve the mysteries of the past.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Ancient Artifacts Gallery -->
+        <div class="bg-white rounded-xl p-6 shadow-md mb-8">
+            <h3 class="text-xl font-semibold mb-4 text-amber-800">
+                <span class="tr-lang">Keşfedilen Eserler</span>
+                <span class="en-lang hidden">Discovered Artifacts</span>
+            </h3>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="artifact bg-amber-50 p-4 rounded-lg text-center">
+                    <div class="w-16 h-16 mx-auto mb-2 bg-[url('https://cdn-icons-png.flaticon.com/512/2972/2972027.png')] bg-contain bg-no-repeat bg-center"></div>
+                    <h4 class="font-medium text-amber-800">
+                        <span class="tr-lang">Mısır Yüzüğü</span>
+                        <span class="en-lang hidden">Egyptian Ring</span>
+                    </h4>
+                    <p class="text-xs text-gray-600">
+                        <span class="tr-lang">Zaman yolculuğu aracı</span>
+                        <span class="en-lang hidden">Time travel device</span>
+                    </p>
+                </div>
+                <div class="artifact bg-amber-50 p-4 rounded-lg text-center">
+                    <div class="w-16 h-16 mx-auto mb-2 bg-[url('https://cdn-icons-png.flaticon.com/512/190/190708.png')] bg-contain bg-no-repeat bg-center"></div>
+                    <h4 class="font-medium text-amber-800">
+                        <span class="tr-lang">Hiyeroglif Tablet</span>
+                        <span class="en-lang hidden">Hieroglyph Tablet</span>
+                    </h4>
+                    <p class="text-xs text-gray-600">
+                        <span class="tr-lang">Eski Mısır yazıtları</span>
+                        <span class="en-lang hidden">Ancient Egyptian inscriptions</span>
+                    </p>
+                </div>
+                <div class="artifact bg-amber-50 p-4 rounded-lg text-center">
+                    <div class="w-16 h-16 mx-auto mb-2 bg-[url('https://cdn-icons-png.flaticon.com/512/190/190700.png')] bg-contain bg-no-repeat bg-center"></div>
+                    <h4 class="font-medium text-amber-800">
+                        <span class="tr-lang">Yunan Vazosu</span>
+                        <span class="en-lang hidden">Greek Vase</span>
+                    </h4>
+                    <p class="text-xs text-gray-600">
+                        <span class="tr-lang">Mitolojik sahneler</span>
+                        <span class="en-lang hidden">Mythological scenes</span>
+                    </p>
+                </div>
+                <div class="artifact bg-amber-50 p-4 rounded-lg text-center">
+                    <div class="w-16 h-16 mx-auto mb-2 bg-[url('https://cdn-icons-png.flaticon.com/512/190/190698.png')] bg-contain bg-no-repeat bg-center"></div>
+                    <h4 class="font-medium text-amber-800">
+                        <span class="tr-lang">Roma Madalyonu</span>
+                        <span class="en-lang hidden">Roman Coin</span>
+                    </h4>
+                    <p class="text-xs text-gray-600">
+                        <span class="tr-lang">İmparator portresi</span>
+                        <span class="en-lang hidden">Emperor portrait</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Interactive Quiz -->
+        <div class="bg-white rounded-xl p-6 shadow-md">
+            <h3 class="text-xl font-semibold mb-4 text-amber-800">
+                <span class="tr-lang">Antik Dünya Testi</span>
+                <span class="en-lang hidden">Ancient World Quiz</span>
+            </h3>
+            <div id="quiz-container">
+                <div class="mb-4">
+                    <p class="font-medium mb-2">
+                        <span class="tr-lang">1. Antik Mısır'da piramitlerin temel işlevi neydi?</span>
+                        <span class="en-lang hidden">1. What was the primary function of pyramids in Ancient Egypt?</span>
+                    </p>
+                    <div class="flex flex-col space-y-2">
+                        <label class="inline-flex items-center">
+                            <input type="radio" name="q1" value="0" class="form-radio text-amber-600">
+                            <span class="ml-2 tr-lang">Gözlemevi olarak kullanılmak</span>
+                            <span class="ml-2 en-lang hidden">To be used as observatories</span>
+                        </label>
+                        <label class="inline-flex items-center">
+                            <input type="radio" name="q1" value="1" class="form-radio text-amber-600">
+                            <span class="ml-2 tr-lang">Firavunların mezarları olmak</span>
+                            <span class="ml-2 en-lang hidden">To be tombs for pharaohs</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="mb-4">
+                    <p class="font-medium mb-2">
+                        <span class="tr-lang">2. Antik Yunan'da demokrasi hangi şehirde doğdu?</span>
+                        <span class="en-lang hidden">2. In which city did democracy originate in Ancient Greece?</span>
+                    </p>
+                    <div class="flex flex-col space-y-2">
+                        <label class="inline-flex items-center">
+                            <input type="radio" name="q2" value="1" class="form-radio text-amber-600">
+                            <span class="ml-2 tr-lang">Atina</span>
+                            <span class="ml-2 en-lang hidden">Athens</span>
+                        </label>
+                        <label class="inline-flex items-center">
+                            <input type="radio" name="q2" value="0" class="form-radio text-amber-600">
+                            <span class="ml-2 tr-lang">Sparta</span>
+                            <span class="ml-2 en-lang hidden">Sparta</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <button id="check-answers" class="bg-amber-600 text-white px-4 py-2 rounded hover:bg-amber-700 transition">
+                    <span class="tr-lang">Cevapları Kontrol Et</span>
+                    <span class="en-lang hidden">Check Answers</span>
+                </button>
+                
+                <div id="quiz-result" class="mt-4 hidden">
+                    <p class="font-semibold">
+                        <span class="tr-lang">Sonuç: </span>
+                        <span class="en-lang hidden">Result: </span>
+                        <span id="score">0</span>/2
+                    </p>
+                    <p id="feedback" class="text-sm text-gray-600 mt-1"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Language Switch
+        document.getElementById('tr-btn').addEventListener('click', function() {
+            document.querySelectorAll('.tr-lang').forEach(el => el.classList.remove('hidden'));
+            document.querySelectorAll('.en-lang').forEach(el => el.classList.add('hidden'));
+            document.getElementById('tr-btn').classList.remove('bg-gray-600');
+            document.getElementById('tr-btn').classList.add('bg-amber-600');
+            document.getElementById('en-btn').classList.remove('bg-amber-600');
+            document.getElementById('en-btn').classList.add('bg-gray-600');
+            document.getElementById('voice-select').innerHTML = `
+                <option value="tr">Türkçe Ses</option>
+                <option value="en">English Voice</option>
+            `;
+        });
+
+        document.getElementById('en-btn').addEventListener('click', function() {
+            document.querySelectorAll('.en-lang').forEach(el => el.classList.remove('hidden'));
+            document.querySelectorAll('.tr-lang').forEach(el => el.classList.add('hidden'));
+            document.getElementById('en-btn').classList.remove('bg-gray-600');
+            document.getElementById('en-btn').classList.add('bg-amber-600');
+            document.getElementById('tr-btn').classList.remove('bg-amber-600');
+            document.getElementById('tr-btn').classList.add('bg-gray-600');
+            document.getElementById('voice-select').innerHTML = `
+                <option value="en">English Voice</option>
+                <option value="tr">Türkçe Ses</option>
+            `;
+        });
+
+        // Text-to-Speech
+        const playBtn = document.getElementById('play-btn');
+        const voiceSelect = document.getElementById('voice-select');
+        const progressContainer = document.getElementById('progress-container');
+        const progressBar = document.getElementById('progress-bar');
+        
+        let speech = null;
+        let isPlaying = false;
+        
+        playBtn.addEventListener('click', function() {
+            if (isPlaying) {
+                stopSpeech();
+            } else {
+                startSpeech();
+            }
+        });
+        
+        function startSpeech() {
+            if (speech) {
+                window.speechSynthesis.cancel();
+            }
+            
+            const selectedLanguage = voiceSelect.value;
+            const textToSpeak = selectedLanguage === 'tr' 
+                ? document.querySelector('.tr-lang').textContent 
+                : document.querySelector('.en-lang').textContent;
+            
+            speech = new SpeechSynthesisUtterance();
+            speech.text = textToSpeak;
+            speech.lang = selectedLanguage === 'tr' ? 'tr-TR' : 'en-US';
+            
+            // Find appropriate voice
+            const voices = window.speechSynthesis.getVoices();
+            const preferredVoice = voices.find(voice => 
+                selectedLanguage === 'tr' 
+                    ? voice.lang === 'tr-TR' 
+                    : voice.lang.startsWith('en-') && voice.name.includes('English')
+            );
+            
+            if (preferredVoice) {
+                speech.voice = preferredVoice;
+            }
+            
+            // Progress tracking
+            let startTime;
+            speech.onstart = function() {
+                isPlaying = true;
+                playBtn.innerHTML = '<i class="fas fa-pause text-xl"></i>';
+                progressContainer.classList.remove('hidden');
+                startTime = Date.now();
+            };
+            
+            speech.onend = function() {
+                isPlaying = false;
+                playBtn.innerHTML = '<i class="fas fa-play text-xl"></i>';
+                progressBar.style.width = '0%';
+            };
+            
+            speech.onboundary = function(event) {
+                const elapsed = Date.now() - startTime;
+                const estimatedTotal = (speech.text.length / event.charIndex) * elapsed;
+                const progress = (elapsed / estimatedTotal) * 100;
+                progressBar.style.width = `${Math.min(100, progress)}%`;
+            };
+            
+            window.speechSynthesis.speak(speech);
+        }
+        
+        function stopSpeech() {
+            if (window.speechSynthesis.speaking) {
+                window.speechSynthesis.cancel();
+                isPlaying = false;
+                playBtn.innerHTML = '<i class="fas fa-play text-xl"></i>';
+                progressBar.style.width = '0%';
+            }
+        }
+        
+        // Load voices when they become available
+        window.speechSynthesis.onvoiceschanged = function() {
+            const voices = window.speechSynthesis.getVoices();
+        };
+        
+        // Quiz functionality
+        document.getElementById('check-answers').addEventListener('click', function() {
+            const q1 = document.querySelector('input[name="q1"]:checked')?.value || '0';
+            const q2 = document.querySelector('input[name="q2"]:checked')?.value || '0';
+            
+            const score = parseInt(q1) + parseInt(q2);
+            const resultDiv = document.getElementById('quiz-result');
+            const scoreSpan = document.getElementById('score');
+            const feedback = document.getElementById('feedback');
+            
+            resultDiv.classList.remove('hidden');
+            scoreSpan.textContent = score;
+            
+            if (score === 2) {
+                feedback.textContent = document.querySelector('.tr-lang') 
+                    ? 'Mükemmel! Antik uygarlıklar hakkında çok bilgilisiniz!' 
+                    : 'Excellent! You know a lot about ancient civilizations!';
+            } else if (score === 1) {
+                feedback.textContent = document.querySelector('.tr-lang') 
+                    ? 'Fena değil! Biraz daha çalışırsanız tarih uzmanı olacaksınız!' 
+                    : 'Not bad! With a little more study, you\'ll be a history expert!';
+            } else {
+                feedback.textContent = document.querySelector('.tr-lang') 
+                    ? 'Antik dünya hakkında daha fazla okumalısınız. Hikayeyi tekrar dinleyin!' 
+                    : 'You should read more about the ancient world. Listen to the story again!';
+            }
+        });
+        
+        // Initialize with Turkish
+        document.getElementById('tr-btn').click();
+    </script>
+</body>
+</html>
