@@ -170,3 +170,22 @@ html, body {
   footer {
     flex-shrink: 0; /* Küçülmeyi engeller */
   }
+  /* style.css dosyanıza bu stilleri ekleyin */
+html {
+    height: 100%;
+  }
+  
+  body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  main {
+    flex: 1;
+    padding-bottom: 2rem; /* Ana içerik ile footer arasında boşluk */
+  }
+  
+  footer {
+    margin-top: auto;
+  }
