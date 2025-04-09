@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shakespeare'in Gizli Anlamları | Shakespeare's Hidden Meanings</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .quill-bg {
+            background-image: url('https://images.unsplash.com/photo-1578269174936-2709b6aeb913?q=80&w=2071&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-blend-mode: overlay;
+            background-color: rgba(245, 245, 220, 0.9);
+        }
+        .ink-spot {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(20, 20, 60, 0.2) 0%, transparent 70%);
+            border-radius: 50%;
+            filter: blur(10px);
+        }
+        .play-btn {
+            transition: all 0.3s ease;
+        }
+        .play-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 15px rgba(139, 69, 19, 0.5);
+        }
+        .language-switch {
+            transition: all 0.3s ease;
+        }
+        .language-switch:hover {
+            transform: translateY(-2px);
+        }
+        .play-card {
+            transition: all 0.3s ease;
+            transform-style: preserve-3d;
+        }
+        .play-card:hover {
+            transform: translateY(-5px) rotateX(5deg);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="bg-amber-50 min-h-screen">
+    <!-- Decorative ink spots -->
+    <div class="ink-spot top-20 left-10"></div>
+    <div class="ink-spot bottom-20 right-10" style="width: 150px; height: 150px;"></div>
+    
+    <div class="container mx-auto px-4 py-8">
+        <!-- Header with Language Switch -->
+        <header class="flex flex-col md:flex-row justify-between items-center mb-8">
+            <h1 class="text-4xl font-bold text-amber-900 mb-4 md:mb-0">
+                <span class="tr-lang">Shakespeare'in Gizli Anlamları</span>
+                <span class="en-lang hidden">Shakespeare's Hidden Meanings</span>
+            </h1>
+            <div class="flex space-x-2">
+                <button id="tr-btn" class="language-switch bg-amber-700 text-white px-4 py-2 rounded-full shadow-md flex items-center">
+                    <i class="fas fa-scroll mr-2"></i>
+                    <span>Türkçe</span>
+                </button>
+                <button id="en-btn" class="language-switch bg-gray-700 text-white px-4 py-2 rounded-full shadow-md flex items-center">
+                    <i class="fas fa-scroll mr-2"></i>
+                    <span>English</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Story Container -->
+        <div class="quill-bg rounded-xl p-6 mb-8 relative overflow-hidden shadow-lg">
+            <div class="absolute inset-0 bg-amber-50 opacity-80"></div>
+            
+            <div class="relative z-10">
+                <!-- Story Title -->
+                <h2 class="text-3xl font-serif font-semibold mb-6 text-amber-900 border-b border-amber-200 pb-2">
+                    <span class="tr-lang">Bard'ın Sırları: Shakespeare'in Perde Arkası</span>
+                    <span class="en-lang hidden">The Bard's Secrets: Behind Shakespeare's Curtain</span>
+                </h2>
+                
+                <!-- Audio Controls -->
+                <div class="flex items-center mb-6 space-x-4 bg-white bg-opacity-70 p-3 rounded-lg">
+                    <button id="play-btn" class="play-btn bg-amber-700 text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg">
+                        <i class="fas fa-play text-xl"></i>
+                    </button>
+                    <div class="text-gray-700 font-medium">
+                        <span class="tr-lang">Dinle</span>
+                        <span class="en-lang hidden">Listen</span>
+                    </div>
+                    <select id="voice-select" class="border border-gray-300 rounded px-3 py-1 ml-4 bg-white">
+                        <option value="tr" class="tr-lang">Türkçe Ses</option>
+                        <option value="en" class="en-lang hidden">English Voice</option>
+                    </select>
+                    <div id="progress-container" class="flex-1 bg-gray-200 rounded-full h-2 hidden">
+                        <div id="progress-bar" class="bg-amber-700 h-2 rounded-full" style="width: 0%"></div>
+                    </div>
+                </div>
+                
+                <!-- Story Content -->
+                <div class="prose max-w-none text-gray-800 font-serif">
+                    <div class="tr-lang">
+                        <p class="mb-4">Londra'nın sisli sokaklarında, Elizabeth döneminin en büyük sırrı saklanıyordu. William Shakespeare'in eserleri, yüzeyde göründüklerinden çok daha fazlasını anlatıyordu.</p>
+                        
+                        <p class="mb-4"><strong>Hamlet:</strong> Danimarka Prensi'nin trajedisi aslında bir siyasi alegoriydi. Shakespeare, babasını kaybeden genç prensin hikayesiyle, Tudor hanedanının karanlık yüzünü eleştiriyordu. "Olmak ya da olmamak" monoloğu, sadece varoluşsal bir sorgulama değil, aynı zamanda dönemin baskıcı rejimine karşı bir başkaldırı çağrısıydı.</p>
+                        
+                        <p class="mb-4"><strong>Romeo ve Juliet:</strong> Bu genç aşıkların hikayesi, aslında Veronalı iki ailenin kavgasından çok daha derin bir mesaj taşıyordu. Shakespeare, feodal sistemin katı kurallarını ve gençlerin bu sistemdeki çaresizliğini anlatıyordu. Juliet'in "Romeo, neden sen Romeo'sun?" sorusu, toplumsal kimliklerin aşk üzerindeki yıkıcı etkisini sorguluyordu.</p>
+                        
+                        <p class="mb-4"><strong>Macbeth:</strong> İktidar hırsıyla gözü dönen İskoç lordun hikayesi, Shakespeare'in en karanlık eserlerinden biriydi. Ancak bu oyun, sadece bir trajedi değil, aynı zamanda James I'in İngiltere tahtına geçişi sırasındaki politik gerilimlerin bir yansımasıydı. Cadıların kehanetleri, dönemin siyasi belirsizliklerini simgeliyordu.</p>
+                        
+                        <p class="mb-4"><strong>Bir Yaz Gecesi Rüyası:</strong> Bu neşeli komedi, yüzeyde aşk ve yanlış anlaşılmalarla dolu bir hikaye gibi görünse de, aslında Shakespeare'in insan doğasına dair derin gözlemlerini içeriyordu. Oberon ve Titania'nın kavgası, doğa ile uygarlık arasındaki çatışmayı temsil ediyordu.</p>
+                        
+                        <p class="mb-6">Shakespeare'in eserlerindeki bu gizli anlamlar, onun sadece bir oyun yazarı değil, aynı zamanda keskin bir sosyal gözlemci ve cesur bir eleştirmen olduğunu gösteriyor. Eserleri, Elizabeth dönemi İngiltere'sinin tüm çelişkilerini ve gerilimlerini yansıtan bir ayna gibiydi.</p>
+                        
+                        <blockquote class="border-l-4 border-amber-700 pl-4 italic text-amber-900 my-6">
+                            "Tüm dünya bir sahnedir,<br>
+                            Ve tüm erkekler ve kadınlar sadece oyunculardır.<br>
+                            Girerler ve çıkarlar..."
+                        </blockquote>
+                    </div>
+                    
+                    <div class="en-lang hidden">
+                        <p class="mb-4">In the foggy streets of London, the greatest secret of the Elizabethan era was hidden. William Shakespeare's works told much more than what appeared on the surface.</p>
+                        
+                        <p class="mb-4"><strong>Hamlet:</strong> The tragedy of the Prince of Denmark was actually a political allegory. Through the story of the young prince who lost his father, Shakespeare was criticizing the dark side of the Tudor dynasty. The "To be or not to be" monologue was not just an existential questioning, but also a call to rebellion against the oppressive regime of the time.</p>
+                        
+                        <p class="mb-4"><strong>Romeo and Juliet:</strong> The story of these young lovers carried a message much deeper than just the feud between two Veronese families. Shakespeare was describing the rigid rules of the feudal system and the helplessness of young people within this system. Juliet's question "Romeo, why are you Romeo?" questioned the destructive effect of social identities on love.</p>
+                        
+                        <p class="mb-4"><strong>Macbeth:</strong> The story of the Scottish lord blinded by ambition for power was one of Shakespeare's darkest works. But this play was not just a tragedy, it was also a reflection of the political tensions during James I's accession to the English throne. The witches' prophecies symbolized the political uncertainties of the time.</p>
+                        
+                        <p class="mb-4"><strong>A Midsummer Night's Dream:</strong> While this cheerful comedy appeared to be just a story full of love and misunderstandings on the surface, it actually contained Shakespeare's profound observations about human nature. The quarrel between Oberon and Titania represented the conflict between nature and civilization.</p>
+                        
+                        <p class="mb-6">These hidden meanings in Shakespeare's works show that he was not just a playwright, but also a sharp social observer and a bold critic. His works were like a mirror reflecting all the contradictions and tensions of Elizabethan England.</p>
+                        
+                        <blockquote class="border-l-4 border-amber-700 pl-4 italic text-amber-900 my-6">
+                            "All the world's a stage,<br>
+                            And all the men and women merely players.<br>
+                            They have their exits and their entrances..."
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Shakespeare's Plays Cards -->
+        <div class="bg-white rounded-xl p-6 mb-8 shadow-md">
+            <h3 class="text-xl font-serif font-semibold mb-6 text-amber-900">
+                <span class="tr-lang">Shakespeare'in Büyük Eserleri ve Gizli Mesajları</span>
+                <span class="en-lang hidden">Shakespeare's Great Works and Hidden Messages</span>
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Hamlet Card -->
+                <div class="play-card bg-amber-50 p-4 rounded-lg shadow-md border border-amber-200">
+                    <div class="w-16 h-16 mx-auto mb-3 bg-[url('https://cdn-icons-png.flaticon.com/512/4331/4331573.png')] bg-contain bg-no-repeat bg-center"></div>
+                    <h4 class="font-serif font-bold text-center text-amber-900 mb-2">Hamlet</h4>
+                    <p class="text-sm text-gray-700 mb-3">
+                        <span class="tr-lang">Siyasi entrika ve varoluş sorgusu</span>
+                        <span class="en-lang hidden">Political intrigue and existential questioning</span>
+                    </p>
+                    <div class="text-xs text-amber-800 font-medium">
+                        <span class="tr-lang">Gizli Mesaj:</span>
+                        <span class="en-lang hidden">Hidden Message:</span>
+                        <span class="tr-lang">İktidarın yozlaştırıcı doğası</span>
+                        <span class="en-lang hidden">The corrupting nature of power</span>
+                    </div>
+                </div>
+                
+                <!-- Romeo and Juliet Card -->
+                <div class="play-card bg-amber-50 p-4 rounded-lg shadow-md border border-amber-200">
+                    <div class="w-16 h-16 mx-auto mb-3 bg-[url('https://cdn-icons-png.flaticon.com/512/4331/4331577.png')] bg-contain bg-no-repeat bg-center"></div>
+                    <h4 class="font-serif font-bold text-center text-amber-900 mb-2">
+                        <span class="tr-lang">Romeo ve Juliet</span>
+                        <span class="en-lang hidden">Romeo and Juliet</span>
+                    </h4>
+                    <p class="text-sm text-gray-700 mb-3">
+                        <span class="tr-lang">Yasak aşk ve trajik son</span>
+                        <span class="en-lang hidden">Forbidden love and tragic ending</span>
+                    </p>
+                    <div class="text-xs text-amber-800 font-medium">
+                        <span class="tr-lang">Gizli Mesaj:</span>
+                        <span class="en-lang hidden">Hidden Message:</span>
+                        <span class="tr-lang">Toplumsal normların yıkıcılığı</span>
+                        <span class="en-lang hidden">Destructiveness of social norms</span>
+                    </div>
+                </div>
+                
+                <!-- Macbeth Card -->
+                <div class="play-card bg-amber-50 p-4 rounded-lg shadow-md border border-amber-200">
+                    <div class="w-16 h-16 mx-auto mb-3 bg-[url('https://cdn-icons-png.flaticon.com/512/4331/4331575.png')] bg-contain bg-no-repeat bg-center"></div>
+                    <h4 class="font-serif font-bold text-center text-amber-900 mb-2">Macbeth</h4>
+                    <p class="text-sm text-gray-700 mb-3">
+                        <span class="tr-lang">Hırs ve suçun psikolojisi</span>
+                        <span class="en-lang hidden">Ambition and psychology of crime</span>
+                    </p>
+                    <div class="text-xs text-amber-800 font-medium">
+                        <span class="tr-lang">Gizli Mesaj:</span>
+                        <span class="en-lang hidden">Hidden Message:</span>
+                        <span class="tr-lang">İktidarın bedeli ve insanın karanlık yüzü</span>
+                        <span class="en-lang hidden">Price of power and man's dark side</span>
+                    </div>
+                </div>
+                
+                <!-- Midsummer Night's Dream Card -->
+                <div class="play-card bg-amber-50 p-4 rounded-lg shadow-md border border-amber-200">
+                    <div class="w-16 h-16 mx-auto mb-3 bg-[url('https://cdn-icons-png.flaticon.com/512/4331/4331576.png')] bg-contain bg-no-repeat bg-center"></div>
+                    <h4 class="font-serif font-bold text-center text-amber-900 mb-2">
+                        <span class="tr-lang">Bir Yaz Gecesi Rüyası</span>
+                        <span class="en-lang hidden">A Midsummer Night's Dream</span>
+                    </h4>
+                    <p class="text-sm text-gray-700 mb-3">
+                        <span class="tr-lang">Büyülü bir aşk komedisi</span>
+                        <span class="en-lang hidden">Magical love comedy</span>
+                    </p>
+                    <div class="text-xs text-amber-800 font-medium">
+                        <span class="tr-lang">Gizli Mesaj:</span>
+                        <span class="en-lang hidden">Hidden Message:</span>
+                        <span class="tr-lang">Doğa ile uygarlık arasındaki çatışma</span>
+                        <span class="en-lang hidden">Conflict between nature and civilization</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Shakespeare Quiz -->
+        <div class="bg-white rounded-xl p-6 shadow-md">
+            <h3 class="text-xl font-serif font-semibold mb-6 text-amber-900">
+                <span class="tr-lang">Shakespeare Bilginizi Test Edin</span>
+                <span class="en-lang hidden">Test Your Shakespeare Knowledge</span>
+            </h3>
+            <div id="quiz-container">
+                <div class="mb-4">
+                    <p class="font-medium mb-2">
+                        <span class="tr-lang">1. "Olmak ya da olmamak" monoloğu hangi oyunda geçer?</span>
+                        <span class="en-lang hidden">1. In which play does the "To be or not to be" soliloquy appear?</span>
+                    </p>
+                    <div class="flex flex-col space-y-2">
+                        <label class="inline-flex items-center">
+                            <input type="radio" name="q1" value="0" class="form-radio text-amber-700">
+                            <span class="ml-2 tr-lang">Macbeth</span>
+                            <span class="ml-2 en-lang hidden">Macbeth</span>
+                        </label>
+                        <label class="inline-flex items-center">
+                            <input type="radio" name="q1" value="1" class="form-radio text-amber-700">
+                            <span class="ml-2 tr-lang">Hamlet</span>
+                            <span class="ml-2 en-lang hidden">Hamlet</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="mb-4">
+                    <p class="font-medium mb-2">
+                        <span class="tr-lang">2. Shakespeare'in eserlerinde sıkça ele aldığı temalardan biri nedir?</span>
+                        <span class="en-lang hidden">2. What is one of the recurring themes in Shakespeare's works?</span>
+                    </p>
+                    <div class="flex flex-col space-y-2">
+                        <label class="inline-flex items-center">
+                            <input type="radio" name="q2" value="1" class="form-radio text-amber-700">
+                            <span class="ml-2 tr-lang">İktidarın yozlaştırıcı doğası</span>
+                            <span class="ml-2 en-lang hidden">The corrupting nature of power</span>
+                        </label>
+                        <label class="inline-flex items-center">
+                            <input type="radio" name="q2" value="0" class="form-radio text-amber-700">
+                            <span class="ml-2 tr-lang">Denizcilik maceraları</span>
+                            <span class="ml-2 en-lang hidden">Nautical adventures</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <button id="check-answers" class="bg-amber-700 text-white px-4 py-2 rounded hover:bg-amber-800 transition font-serif">
+                    <span class="tr-lang">Cevapları Kontrol Et</span>
+                    <span class="en-lang hidden">Check Answers</span>
+                </button>
+                
+                <div id="quiz-result" class="mt-4 hidden">
+                    <p class="font-semibold">
+                        <span class="tr-lang">Sonuç: </span>
+                        <span class="en-lang hidden">Result: </span>
+                        <span id="score">0</span>/2
+                    </p>
+                    <p id="feedback" class="text-sm text-gray-600 mt-1"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Language Switch
+        document.getElementById('tr-btn').addEventListener('click', function() {
+            document.querySelectorAll('.tr-lang').forEach(el => el.classList.remove('hidden'));
+            document.querySelectorAll('.en-lang').forEach(el => el.classList.add('hidden'));
+            document.getElementById('tr-btn').classList.remove('bg-gray-700');
+            document.getElementById('tr-btn').classList.add('bg-amber-700');
+            document.getElementById('en-btn').classList.remove('bg-amber-700');
+            document.getElementById('en-btn').classList.add('bg-gray-700');
+            document.getElementById('voice-select').innerHTML = `
+                <option value="tr">Türkçe Ses</option>
+                <option value="en">English Voice</option>
+            `;
+        });
+
+        document.getElementById('en-btn').addEventListener('click', function() {
+            document.querySelectorAll('.en-lang').forEach(el => el.classList.remove('hidden'));
+            document.querySelectorAll('.tr-lang').forEach(el => el.classList.add('hidden'));
+            document.getElementById('en-btn').classList.remove('bg-gray-700');
+            document.getElementById('en-btn').classList.add('bg-amber-700');
+            document.getElementById('tr-btn').classList.remove('bg-amber-700');
+            document.getElementById('tr-btn').classList.add('bg-gray-700');
+            document.getElementById('voice-select').innerHTML = `
+                <option value="en">English Voice</option>
+                <option value="tr">Türkçe Ses</option>
+            `;
+        });
+
+        // Text-to-Speech
+        const playBtn = document.getElementById('play-btn');
+        const voiceSelect = document.getElementById('voice-select');
+        const progressContainer = document.getElementById('progress-container');
+        const progressBar = document.getElementById('progress-bar');
+        
+        let speech = null;
+        let isPlaying = false;
+        
+        playBtn.addEventListener('click', function() {
+            if (isPlaying) {
+                stopSpeech();
+            } else {
+                startSpeech();
+            }
+        });
+        
+        function startSpeech() {
+            if (speech) {
+                window.speechSynthesis.cancel();
+            }
+            
+            const selectedLanguage = voiceSelect.value;
+            const textToSpeak = selectedLanguage === 'tr' 
+                ? document.querySelector('.tr-lang').textContent 
+                : document.querySelector('.en-lang').textContent;
+            
+            speech = new SpeechSynthesisUtterance();
+            speech.text = textToSpeak;
+            speech.lang = selectedLanguage === 'tr' ? 'tr-TR' : 'en-US';
+            
+            // Find appropriate voice
+            const voices = window.speechSynthesis.getVoices();
+            const preferredVoice = voices.find(voice => 
+                selectedLanguage === 'tr' 
+                    ? voice.lang === 'tr-TR' 
+                    : voice.lang.startsWith('en-') && voice.name.includes('English')
+            );
+            
+            if (preferredVoice) {
+                speech.voice = preferredVoice;
+            }
+            
+            // Progress tracking
+            let startTime;
+            speech.onstart = function() {
+                isPlaying = true;
+                playBtn.innerHTML = '<i class="fas fa-pause text-xl"></i>';
+                progressContainer.classList.remove('hidden');
+                startTime = Date.now();
+            };
+            
+            speech.onend = function() {
+                isPlaying = false;
+                playBtn.innerHTML = '<i class="fas fa-play text-xl"></i>';
+                progressBar.style.width = '0%';
+            };
+            
+            speech.onboundary = function(event) {
+                const elapsed = Date.now() - startTime;
+                const estimatedTotal = (speech.text.length / event.charIndex) * elapsed;
+                const progress = (elapsed / estimatedTotal) * 100;
+                progressBar.style.width = `${Math.min(100, progress)}%`;
+            };
+            
+            window.speechSynthesis.speak(speech);
+        }
+        
+        function stopSpeech() {
+            if (window.speechSynthesis.speaking) {
+                window.speechSynthesis.cancel();
+                isPlaying = false;
+                playBtn.innerHTML = '<i class="fas fa-play text-xl"></i>';
+                progressBar.style.width = '0%';
+            }
+        }
+        
+        // Load voices when they become available
+        window.speechSynthesis.onvoiceschanged = function() {
+            const voices = window.speechSynthesis.getVoices();
+        };
+        
+        // Quiz functionality
+        document.getElementById('check-answers').addEventListener('click', function() {
+            const q1 = document.querySelector('input[name="q1"]:checked')?.value || '0';
+            const q2 = document.querySelector('input[name="q2"]:checked')?.value || '0';
+            
+            const score = parseInt(q1) + parseInt(q2);
+            const resultDiv = document.getElementById('quiz-result');
+            const scoreSpan = document.getElementById('score');
+            const feedback = document.getElementById('feedback');
+            
+            resultDiv.classList.remove('hidden');
+            scoreSpan.textContent = score;
+            
+            if (score === 2) {
+                feedback.textContent = document.querySelector('.tr-lang') 
+                    ? 'Mükemmel! Gerçek bir Shakespeare uzmanısınız!' 
+                    : 'Excellent! You are a true Shakespeare expert!';
+            } else if (score === 1) {
+                feedback.textContent = document.querySelector('.tr-lang') 
+                    ? 'Fena değil! Biraz daha çalışırsanız Bard'ın tüm sırlarını çözeceksiniz!' 
+                    : 'Not bad! With a little more study, you'll uncover all of the Bard's secrets!';
+            } else {
+                feedback.textContent = document.querySelector('.tr-lang') 
+                    ? 'Shakespeare hakkında daha fazla okumalısınız. Hikayeyi tekrar dinleyin!' 
+                    : 'You should read more about Shakespeare. Listen to the story again!';
+            }
+        });
+        
+        // Initialize with Turkish
+        document.getElementById('tr-btn').click();
+    </script>
+</body>
+</html>
