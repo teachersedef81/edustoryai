@@ -7,11 +7,53 @@
     <meta name="keywords" content="edtech, hikaye, AI, eğitim">
     <title>Edu Story AI - Eğitici Hikayeler</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #6b46c1 0%, #805ad5 100%);
+        }
+        .modal {
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+        }
+        .modal.modal-open {
+            opacity: 1;
+            visibility: visible;
+        }
+        .language-dropdown {
+            display: none;
+            position: absolute;
+            right: 0;
+            background: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            z-index: 10;
+            min-width: 120px;
+        }
+        .language-dropdown.show {
+            display: block;
+        }
+        .language-dropdown a {
+            display: block;
+            padding: 0.5rem 1rem;
+            color: #4a5568;
+            text-decoration: none;
+        }
+        .language-dropdown a:hover {
+            background-color: #f7fafc;
+        }
+        .language-dropdown a.active-language {
+            color: #6b46c1;
+            font-weight: 600;
+        }
+        .feature-card {
+            transition: all 0.3s ease;
+        }
+    </style>
+    <link rel="shortcut icon" href="images/favicon.png" type="images/png">
 </head>
-<link rel="shortcut icon" href="images/favicon.png" type="images/png">
-<body class="min-h-screen flex flex-col bg-gray-50"> 
+<body class="min-h-screen flex flex-col bg-gray-50">
     <!-- Header/Navbar -->
     <header class="gradient-bg text-white shadow-md">
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
@@ -20,7 +62,7 @@
                 <h1 class="text-xl font-bold">Edu Story AI</h1>
             </div>
             <div class="flex items-center space-x-4">
-                <div class="language-selector">
+                <div class="language-selector relative">
                     <button id="languageBtn" class="flex items-center space-x-1 p-2 rounded-full hover:bg-white/10 transition">
                         <i class="fas fa-globe"></i>
                         <span id="currentLanguage">TR</span>
@@ -42,7 +84,7 @@
     </header>
 
     <!-- Main Content -->
-    <main class="flex-1 container mx-auto px-4 py-8"> 
+    <main class="flex-1 container mx-auto px-4 py-8">
         <!-- Hero Section -->
         <section class="mb-12 text-center">
             <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-800" data-tr="discover_stories">Eğitici Hikayeler Keşfedin</h2>
@@ -85,256 +127,233 @@
                 </button>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Story Card 1 -->
+                <div class="feature-card bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transform transition-all hover:scale-105">
+                    <a href="science.html" class="block">
+                        <div class="relative">
+                            <!-- Kart Görseli -->
+                            <div class="h-48 overflow-hidden bg-cover bg-center bg-no-repeat" style="background-image: url('images/quantum.png')"></div>
+                            <!-- İki Dilde Başlık Bandı -->
+                            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-r from-indigo-800/80 to-purple-800/80 text-white p-2 flex justify-between">
+                                <span class="font-bold tr-lang">Kuantum Maceraları</span>
+                                <span class="font-bold en-lang hidden">Quantum Adventures</span>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <p class="text-gray-600 mb-2 tr-lang">Meraklı bir çocuğun kuantum dünyasına yolculuğunu keşfedin!</p>
+                            <p class="text-gray-600 mb-2 en-lang hidden">Discover a curious child's journey into the quantum world!</p>
+                            <div class="flex justify-between items-center">
+                                <div class="flex space-x-2">
+                                    <span class="inline-block px-2 py-1 text-xs bg-indigo-100 text-indigo-800 rounded-full">Bilim</span>
+                                    <span class="inline-block px-2 py-1 text-xs bg-purple-100 text-purple-800 rounded-full">Hikaye</span>
+                                </div>
+                                <button class="text-indigo-600 hover:text-indigo-800 font-semibold">
+                                    <span class="tr-lang">Oku <i class="fas fa-arrow-right ml-1"></i></span>
+                                    <span class="en-lang hidden">Read <i class="fas fa-arrow-right ml-1"></i></span>
+                                </button>
+                            </div>
+                        </div>
+                    </a>
+                </div>
 
-<!-- Story Card 1 -->
-<!-- Kuantum Maceraları Kartı -->
-<div class="feature-card bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transform transition-all hover:scale-105">
-    <a href="science.html" class="block">
-      <div class="relative">
-        <!-- Kart Görseli -->
-        <div class="h-48 overflow-hidden bg-cover bg-center bg-no-repeat" 
-     style="background-image: url('images/quantum.png')">
-  </div>
-        <!-- İki Dilde Başlık Bandı -->
-        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-r from-indigo-800/80 to-purple-800/80 text-white p-2 flex justify-between">
-          <span class="font-bold tr-lang">Kuantum Maceraları</span>
-          <span class="font-bold en-lang hidden">Quantum Adventures</span>
-        </div>
-      </div>
-      <div class="p-4">
-        <p class="text-gray-600 mb-2 tr-lang">Meraklı bir çocuğun kuantum dünyasına yolculuğunu keşfedin!</p>
-        <p class="text-gray-600 mb-2 en-lang hidden">Discover a curious child's journey into the quantum world!</p>
-        <div class="flex justify-between items-center">
-          <div class="flex space-x-2">
-            <span class="inline-block px-2 py-1 text-xs bg-indigo-100 text-indigo-800 rounded-full">Bilim</span>
-            <span class="inline-block px-2 py-1 text-xs bg-purple-100 text-purple-800 rounded-full">Hikaye</span>
-          </div>
-          <button class="text-indigo-600 hover:text-indigo-800 font-semibold">
-            <span class="tr-lang">Oku <i class="fas fa-arrow-right ml-1"></i></span>
-            <span class="en-lang hidden">Read <i class="fas fa-arrow-right ml-1"></i></span>
-          </button>
-        </div>
-      </div>
-    </a>
-  </div>
-  
                 <!-- Story Card 2 -->
-               <!-- Zamanda Yolculuk Kartı -->
-<div class="feature-card bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transform transition-all hover:scale-105">
-    <a href="antics.html" class="block">
-      <div class="relative">
-        <!-- Kart Görseli -->
-        <div class="h-48 overflow-hidden bg-cover bg-center bg-no-repeat" 
-     style="background-image: url('images/antik.png')">
-  </div>
-        <!-- İki Dilde Başlık Bandı -->
-        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-r from-amber-800/80 to-amber-600/80 text-white p-2 flex justify-between">
-          <span class="font-bold tr-lang">Zamanda Yolculuk</span>
-          <span class="font-bold en-lang hidden">Time Travel Adventures</span>
-        </div>
-      </div>
-      <div class="p-4">
-        <p class="text-gray-600 mb-2 tr-lang">Arkeolog Dr. Elif'in antik dünyalara olan büyüleyici seyahatine katılın!</p>
-        <p class="text-gray-600 mb-2 en-lang hidden">Join archaeologist Dr. Elif on her fascinating journey to ancient worlds!</p>
-        <div class="flex justify-between items-center">
-          <div class="flex space-x-2">
-            <span class="inline-block px-2 py-1 text-xs bg-amber-100 text-amber-800 rounded-full">Tarih</span>
-            <span class="inline-block px-2 py-1 text-xs bg-orange-100 text-orange-800 rounded-full">Macera</span>
-          </div>
-          <button class="text-amber-600 hover:text-amber-800 font-semibold">
-            <span class="tr-lang">Oku <i class="fas fa-arrow-right ml-1"></i></span>
-            <span class="en-lang hidden">Read <i class="fas fa-arrow-right ml-1"></i></span>
-          </button>
-        </div>
-      </div>
-    </a>
-  </div>
+                <div class="feature-card bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transform transition-all hover:scale-105">
+                    <a href="antics.html" class="block">
+                        <div class="relative">
+                            <!-- Kart Görseli -->
+                            <div class="h-48 overflow-hidden bg-cover bg-center bg-no-repeat" style="background-image: url('images/antik.png')"></div>
+                            <!-- İki Dilde Başlık Bandı -->
+                            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-r from-amber-800/80 to-amber-600/80 text-white p-2 flex justify-between">
+                                <span class="font-bold tr-lang">Zamanda Yolculuk</span>
+                                <span class="font-bold en-lang hidden">Time Travel Adventures</span>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <p class="text-gray-600 mb-2 tr-lang">Arkeolog Dr. Elif'in antik dünyalara olan büyüleyici seyahatine katılın!</p>
+                            <p class="text-gray-600 mb-2 en-lang hidden">Join archaeologist Dr. Elif on her fascinating journey to ancient worlds!</p>
+                            <div class="flex justify-between items-center">
+                                <div class="flex space-x-2">
+                                    <span class="inline-block px-2 py-1 text-xs bg-amber-100 text-amber-800 rounded-full">Tarih</span>
+                                    <span class="inline-block px-2 py-1 text-xs bg-orange-100 text-orange-800 rounded-full">Macera</span>
+                                </div>
+                                <button class="text-amber-600 hover:text-amber-800 font-semibold">
+                                    <span class="tr-lang">Oku <i class="fas fa-arrow-right ml-1"></i></span>
+                                    <span class="en-lang hidden">Read <i class="fas fa-arrow-right ml-1"></i></span>
+                                </button>
+                            </div>
+                        </div>
+                    </a>
+                </div>
 
                 <!-- Story Card 3 -->
-               <!-- Shakespeare'in Gizli Anlamları Kartı -->
-<div class="feature-card bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transform transition-all hover:scale-105">
-    <a href="shakespeare.html" class="block">
-      <div class="relative">
-        <!-- Kart Görseli -->
-        <div class="h-48 overflow-hidden bg-cover bg-center bg-no-repeat" 
-        style="background-image: url('images/shakespeare.png')">
-     </div>
-        <!-- İki Dilde Başlık Bandı -->
-        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-r from-amber-900/80 to-yellow-700/80 text-white p-2 flex justify-between">
-          <span class="font-bold tr-lang">Shakespeare'in Gizli Anlamları</span>
-          <span class="font-bold en-lang hidden">Shakespeare's Hidden Meanings</span>
-        </div>
-      </div>
-      <div class="p-4">
-        <p class="text-gray-600 mb-2 tr-lang">Efsanevi oyunlarda saklı mesajları keşfedin, Bard'ın perde arkasına göz atın!</p>
-        <p class="text-gray-600 mb-2 en-lang hidden">Discover the hidden messages in legendary plays—peek behind the Bard’s curtain!</p>
-        <div class="flex justify-between items-center">
-          <div class="flex space-x-2">
-            <span class="inline-block px-2 py-1 text-xs bg-amber-100 text-amber-800 rounded-full">Edebiyat</span>
-            <span class="inline-block px-2 py-1 text-xs bg-yellow-100 text-yellow-800 rounded-full">Analiz</span>
-          </div>
-          <button class="text-amber-700 hover:text-amber-900 font-semibold">
-            <span class="tr-lang">Oku <i class="fas fa-arrow-right ml-1"></i></span>
-            <span class="en-lang hidden">Read <i class="fas fa-arrow-right ml-1"></i></span>
-          </button>
-        </div>
-      </div>
-    </a>
-  </div>
-  
+                <div class="feature-card bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transform transition-all hover:scale-105">
+                    <a href="shakespeare.html" class="block">
+                        <div class="relative">
+                            <!-- Kart Görseli -->
+                            <div class="h-48 overflow-hidden bg-cover bg-center bg-no-repeat" style="background-image: url('images/shakespeare.png')"></div>
+                            <!-- İki Dilde Başlık Bandı -->
+                            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-r from-amber-900/80 to-yellow-700/80 text-white p-2 flex justify-between">
+                                <span class="font-bold tr-lang">Shakespeare'in Gizli Anlamları</span>
+                                <span class="font-bold en-lang hidden">Shakespeare's Hidden Meanings</span>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <p class="text-gray-600 mb-2 tr-lang">Efsanevi oyunlarda saklı mesajları keşfedin, Bard'ın perde arkasına göz atın!</p>
+                            <p class="text-gray-600 mb-2 en-lang hidden">Discover the hidden messages in legendary plays—peek behind the Bard's curtain!</p>
+                            <div class="flex justify-between items-center">
+                                <div class="flex space-x-2">
+                                    <span class="inline-block px-2 py-1 text-xs bg-amber-100 text-amber-800 rounded-full">Edebiyat</span>
+                                    <span class="inline-block px-2 py-1 text-xs bg-yellow-100 text-yellow-800 rounded-full">Analiz</span>
+                                </div>
+                                <button class="text-amber-700 hover:text-amber-900 font-semibold">
+                                    <span class="tr-lang">Oku <i class="fas fa-arrow-right ml-1"></i></span>
+                                    <span class="en-lang hidden">Read <i class="fas fa-arrow-right ml-1"></i></span>
+                                </button>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
 
-  <section class="mb-12">
-    <div class="flex justify-between items-center mb-6">
-        <h3 class="text-xl font-semibold text-gray-700" data-tr="featured_stories">Yeni Hikayeler</h3>
-        <button class="text-purple-600 hover:text-purple-800 font-medium">
-            <span data-tr="see_all">Tümünü Gör</span> <i class="fas fa-chevron-right ml-1"></i>
-        </button>
-    </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-
-               
+        <!-- New Stories -->
+        <section class="mb-12">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-xl font-semibold text-gray-700" data-tr="featured_stories">Yeni Hikayeler</h3>
+                <button class="text-purple-600 hover:text-purple-800 font-medium">
+                    <span data-tr="see_all">Tümünü Gör</span> <i class="fas fa-chevron-right ml-1"></i>
+                </button>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <!-- Story Card 4 -->
-               <!-- Sayıların Gizemi Kartı -->
-<div class="feature-card bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transform transition-all hover:scale-105">
-    <a href="numbers.html" class="block">
-      <div class="relative">
-        <!-- Kart Görseli -->
-       <div class="h-48 overflow-hidden bg-cover bg-center bg-no-repeat" 
-       style="background-image: url('images/numbers.png')">
-    </div>
-        <!-- İki Dilde Başlık Bandı -->
-        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-r from-blue-900/80 to-indigo-600/80 text-white p-2 flex justify-between">
-          <span class="font-bold tr-lang">Sayıların Gizemi</span>
-          <span class="font-bold en-lang hidden">The Mystery of Numbers</span>
-        </div>
-      </div>
-      <div class="p-4">
-        <p class="text-gray-600 mb-2 tr-lang">Altın oranlardan Fibonacci'ye uzanan büyüleyici matematik yolculuğuna katıl!</p>
-        <p class="text-gray-600 mb-2 en-lang hidden">Join the fascinating math journey from golden ratios to Fibonacci secrets!</p>
-        <div class="flex justify-between items-center">
-          <div class="flex space-x-2">
-            <span class="inline-block px-2 py-1 text-xs bg-blue-100 text-blue-800 rounded-full">Matematik</span>
-            <span class="inline-block px-2 py-1 text-xs bg-indigo-100 text-indigo-800 rounded-full">Bilim</span>
-          </div>
-          <button class="text-blue-700 hover:text-blue-900 font-semibold">
-            <span class="tr-lang">Oku <i class="fas fa-arrow-right ml-1"></i></span>
-            <span class="en-lang hidden">Read <i class="fas fa-arrow-right ml-1"></i></span>
-          </button>
-        </div>
-      </div>
-    </a>
-  </div>
-  
-                <!-- Story Card 5 -->
-                <!-- Yapay Zeka Devrimi Kartı -->
-<div class="feature-card bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transform transition-all hover:scale-105">
-    <a href="aı.html" class="block">
-      <div class="relative">
-        <!-- Kart Görseli -->
-        <div class="h-48 overflow-hidden bg-cover bg-center bg-no-repeat" 
-       style="background-image: url('images/aı.png')">
-    </div>
-        <!-- İki Dilde Başlık Bandı -->
-        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-r from-purple-900/80 to-blue-800/80 text-white p-2 flex justify-between">
-          <span class="font-bold tr-lang">Yapay Zeka Devrimi</span>
-          <span class="font-bold en-lang hidden">The AI Revolution</span>
-        </div>
-      </div>
-      <div class="p-4">
-        <p class="text-gray-600 mb-2 tr-lang">Yapay zekanın dünyamızı nasıl dönüştürdüğünü keşfedin!</p>
-        <p class="text-gray-600 mb-2 en-lang hidden">Explore how artificial intelligence is reshaping our world!</p>
-        <div class="flex justify-between items-center">
-          <div class="flex space-x-2">
-            <span class="inline-block px-2 py-1 text-xs bg-purple-100 text-purple-800 rounded-full">Teknoloji</span>
-            <span class="inline-block px-2 py-1 text-xs bg-blue-100 text-blue-800 rounded-full">Gelecek</span>
-          </div>
-          <button class="text-purple-700 hover:text-purple-900 font-semibold">
-            <span class="tr-lang">Oku <i class="fas fa-arrow-right ml-1"></i></span>
-            <span class="en-lang hidden">Read <i class="fas fa-arrow-right ml-1"></i></span>
-          </button>
-        </div>
-      </div>
-    </a>
-  </div>
-  
+                <div class="feature-card bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transform transition-all hover:scale-105">
+                    <a href="numbers.html" class="block">
+                        <div class="relative">
+                            <!-- Kart Görseli -->
+                            <div class="h-48 overflow-hidden bg-cover bg-center bg-no-repeat" style="background-image: url('images/numbers.png')"></div>
+                            <!-- İki Dilde Başlık Bandı -->
+                            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-r from-blue-900/80 to-indigo-600/80 text-white p-2 flex justify-between">
+                                <span class="font-bold tr-lang">Sayıların Gizemi</span>
+                                <span class="font-bold en-lang hidden">The Mystery of Numbers</span>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <p class="text-gray-600 mb-2 tr-lang">Altın oranlardan Fibonacci'ye uzanan büyüleyici matematik yolculuğuna katıl!</p>
+                            <p class="text-gray-600 mb-2 en-lang hidden">Join the fascinating math journey from golden ratios to Fibonacci secrets!</p>
+                            <div class="flex justify-between items-center">
+                                <div class="flex space-x-2">
+                                    <span class="inline-block px-2 py-1 text-xs bg-blue-100 text-blue-800 rounded-full">Matematik</span>
+                                    <span class="inline-block px-2 py-1 text-xs bg-indigo-100 text-indigo-800 rounded-full">Bilim</span>
+                                </div>
+                                <button class="text-blue-700 hover:text-blue-900 font-semibold">
+                                    <span class="tr-lang">Oku <i class="fas fa-arrow-right ml-1"></i></span>
+                                    <span class="en-lang hidden">Read <i class="fas fa-arrow-right ml-1"></i></span>
+                                </button>
+                            </div>
+                        </div>
+                    </a>
+                </div>
 
-    <!-- Create Story Modal -->
-    <div id="createStoryModal" class="modal modal-closed fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
-        <div class="bg-white rounded-xl max-w-md w-full p-6 relative">
-            <button id="closeModalBtn" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700">
-                <i class="fas fa-times"></i>
-            </button>
-            <h3 class="text-xl font-bold mb-4 text-gray-800" data-tr="create_story">Yeni Hikaye Oluştur</h3>
-            
-            <div class="mb-4">
-                <label class="block text-gray-700 text-sm font-medium mb-2" for="storyTitle" data-tr="story_title">Hikaye Başlığı</label>
-                <input type="text" id="storyTitle" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500">
+                <!-- Story Card 5 -->
+                <div class="feature-card bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transform transition-all hover:scale-105">
+                    <a href="aı.html" class="block">
+                        <div class="relative">
+                            <!-- Kart Görseli -->
+                            <div class="h-48 overflow-hidden bg-cover bg-center bg-no-repeat" style="background-image: url('images/aı.png')"></div>
+                            <!-- İki Dilde Başlık Bandı -->
+                            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-r from-purple-900/80 to-blue-800/80 text-white p-2 flex justify-between">
+                                <span class="font-bold tr-lang">Yapay Zeka Devrimi</span>
+                                <span class="font-bold en-lang hidden">The AI Revolution</span>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <p class="text-gray-600 mb-2 tr-lang">Yapay zekanın dünyamızı nasıl dönüştürdüğünü keşfedin!</p>
+                            <p class="text-gray-600 mb-2 en-lang hidden">Explore how artificial intelligence is reshaping our world!</p>
+                            <div class="flex justify-between items-center">
+                                <div class="flex space-x-2">
+                                    <span class="inline-block px-2 py-1 text-xs bg-purple-100 text-purple-800 rounded-full">Teknoloji</span>
+                                    <span class="inline-block px-2 py-1 text-xs bg-blue-100 text-blue-800 rounded-full">Gelecek</span>
+                                </div>
+                                <button class="text-purple-700 hover:text-purple-900 font-semibold">
+                                    <span class="tr-lang">Oku <i class="fas fa-arrow-right ml-1"></i></span>
+                                    <span class="en-lang hidden">Read <i class="fas fa-arrow-right ml-1"></i></span>
+                                </button>
+                            </div>
+                        </div>
+                    </a>
+                </div>
             </div>
-            
-            <div class="mb-4">
-                <label class="block text-gray-700 text-sm font-medium mb-2" for="storyCategory" data-tr="category">Kategori</label>
-                <select id="storyCategory" size="8" class="w-full h-40 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500">
-                    <option value="" data-tr="select_category">Bir kategori seçin</option>
-                    <option value="science" data-tr="science">Bilim</option>
-                    <option value="history" data-tr="history">Tarih</option>
-                    <option value="literature" data-tr="literature">Edebiyat</option>
-                    <option value="math" data-tr="math">Matematik</option>
-                    <option value="technology" data-tr="technology">Teknoloji</option>
-                    <option value="music" data-tr="music">Müzik</option>
-                    <option value="art" data-tr="art">Sanat</option>
-                    <option value="foreign_languages" data-tr="foreign languages">Yabancı Diller</option>                    
-                </select>
-            </div>
-            
-            <div class="mb-4">
-                <label class="block text-gray-700 text-sm font-medium mb-2" for="storyPrompt" data-tr="story_prompt">Hikaye Konusu</label>
-                <textarea id="storyPrompt" rows="4" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="Hikayenizin ne hakkında olmasını istediğinizi açıklayın..." data-tr-placeholder="story_placeholder"></textarea>
-            </div>
-            
-            <div class="flex justify-end space-x-3">
-                <button id="cancelBtn" class="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-100" data-tr="cancel">
-                    İptal
+        </section>
+
+        <!-- Create Story Modal -->
+        <div id="createStoryModal" class="modal modal-closed fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
+            <div class="bg-white rounded-xl max-w-md w-full p-6 relative">
+                <button id="closeModalBtn" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times"></i>
                 </button>
-                <button id="generateBtn" class="gradient-bg text-white px-4 py-2 rounded-md hover:opacity-90" data-tr="generate">
-                    Hikaye Oluştur
-                </button>
+                <h3 class="text-xl font-bold mb-4 text-gray-800" data-tr="create_story">Yeni Hikaye Oluştur</h3>
+
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-medium mb-2" for="storyTitle" data-tr="story_title">Hikaye Başlığı</label>
+                    <input type="text" id="storyTitle" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500">
+                </div>
+
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-medium mb-2" for="storyCategory" data-tr="category">Kategori</label>
+                    <select id="storyCategory" size="8" class="w-full h-40 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500">
+                        <option value="" data-tr="select_category">Bir kategori seçin</option>
+                        <option value="science" data-tr="science">Bilim</option>
+                        <option value="history" data-tr="history">Tarih</option>
+                        <option value="literature" data-tr="literature">Edebiyat</option>
+                        <option value="math" data-tr="math">Matematik</option>
+                        <option value="technology" data-tr="technology">Teknoloji</option>
+                        <option value="music" data-tr="music">Müzik</option>
+                        <option value="art" data-tr="art">Sanat</option>
+                        <option value="foreign_languages" data-tr="foreign languages">Yabancı Diller</option>
+                    </select>
+                </div>
+
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-medium mb-2" for="storyPrompt" data-tr="story_prompt">Hikaye Konusu</label>
+                    <textarea id="storyPrompt" rows="4" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="Hikayenizin ne hakkında olmasını istediğinizi açıklayın..." data-tr-placeholder="story_placeholder"></textarea>
+                </div>
+
+                <div class="flex justify-end space-x-3">
+                    <button id="cancelBtn" class="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-100" data-tr="cancel">
+                        İptal
+                    </button>
+                    <button id="generateBtn" class="gradient-bg text-white px-4 py-2 rounded-md hover:opacity-90" data-tr="generate">
+                        Hikaye Oluştur
+                    </button>
+                </div>
             </div>
         </div>
-    </div>
+    </main>
 
     <!-- Footer -->
     <footer class="bg-gray-800 text-white py-8 w-full mt-auto">
         <div class="container mx-auto px-4">
-          <div class="flex flex-col md:flex-row justify-between items-start md:items-center">
-            <div class="mb-6 md:mb-0">
-              <div class="flex items-center space-x-2 mb-3">
-                <i class="fas fa-book-open text-2xl"></i>
-                <h2 class="text-xl font-bold">Edu Story AI</h2>
-              </div>
-              <p class="text-gray-400 text-sm max-w-md">Herkes için AI destekli eğitici hikayeler.</p>
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <div class="flex items-center space-x-2">
+                        <i class="fas fa-book-open text-2xl"></i>
+                        <h2 class="text-xl font-bold">Edu Story AI</h2>
+                    </div>
+                    <p class="text-gray-400 mt-2 text-sm" data-tr="footer_desc">Herkes için AI destekli eğitici hikayeler.</p>
+                </div>
+                <div class="flex flex-wrap justify-center gap-x-6 gap-y-2">
+                    <a href="#" class="hover:text-purple-300 transition" data-tr="about">Hakkında</a>
+                    <a href="#" class="hover:text-purple-300 transition" data-tr="contact">İletişim</a>
+                    <a href="#" class="hover:text-purple-300 transition" data-tr="privacy">Gizlilik</a>
+                    <a href="#" class="hover:text-purple-300 transition" data-tr="terms">Koşullar</a>
+                </div>
             </div>
-            <div class="grid grid-cols-2 gap-8">
-              <div>
-                <h3 class="text-lg font-semibold mb-3">Bağlantılar</h3>
-                <ul class="space-y-2">
-                  <li><a href="#" class="text-gray-400 hover:text-purple-300 transition">Hakkında</a></li>
-                  <li><a href="#" class="text-gray-400 hover:text-purple-300 transition">İletişim</a></li>
-                </ul>
-              </div>
-              <div>
-                <h3 class="text-lg font-semibold mb-3">Yasal</h3>
-                <ul class="space-y-2">
-                  <li><a href="#" class="text-gray-400 hover:text-purple-300 transition">Gizlilik</a></li>
-                  <li><a href="#" class="text-gray-400 hover:text-purple-300 transition">Koşullar</a></li>
-                </ul>
-              </div>
+            <div class="border-t border-gray-700 mt-8 pt-6 text-center text-gray-400 text-sm">
+                &copy; <span id="currentYear"></span> Edu Story AI. <span data-tr="rights">Tüm hakları saklıdır.</span>
             </div>
-          </div>
-          <div class="border-t border-gray-700 mt-8 pt-6 text-center text-gray-400 text-sm">
-            &copy; 2025 Edu Story AI. Tüm hakları saklıdır.
-          </div>
         </div>
-      </footer>
+    </footer>
+
     <script>
         // Translation data
         const translations = {
@@ -460,6 +479,15 @@
                     option.textContent = translations[lang][key];
                 }
             });
+
+            // Toggle language classes for story cards
+            document.querySelectorAll('.tr-lang, .en-lang').forEach(element => {
+                if (element.classList.contains('tr-lang')) {
+                    element.classList.toggle('hidden', lang !== 'tr');
+                } else if (element.classList.contains('en-lang')) {
+                    element.classList.toggle('hidden', lang !== 'en');
+                }
+            });
         }
 
         // Language selector functionality
@@ -527,7 +555,7 @@
             
             // In a real app, this would call an API to generate the story
             alert(currentLanguage === 'tr' 
-                ? `"${title}" başlıklı ${category} kategorisindeki hikaye oluşturulacak: ${prompt}`
+                 ? `"${title}" başlıklı ${category} kategorisindeki hikaye oluşturulacak: ${prompt}`
                 : `Story "${title}" in ${category} category will be generated with prompt: ${prompt}`);
             closeModal();
         });
@@ -544,14 +572,16 @@
                 
                 // In a real app, this would filter stories by category
                 console.log(currentLanguage === 'tr' 
-                    ? `${chip.textContent.trim()} kategorisine göre filtreleme yapılıyor`
+                     ? `${chip.textContent.trim()} kategorisine göre filtreleme yapılıyor`
                     : `Filtering by ${chip.textContent.trim()} category`);
             });
         });
 
+        // Set current year in footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
         // Initialize with Turkish translations
         applyTranslations('tr');
     </script>
-
 </body>
 </html>
