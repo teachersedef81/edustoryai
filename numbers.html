@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sayıların Gizemi | The Mystery of Numbers</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .math-bg {
+            background-image: url('https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-blend-mode: overlay;
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+        .number-bubble {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, rgba(100, 200, 255, 0.2) 0%, transparent 70%);
+            border-radius: 50%;
+            filter: blur(5px);
+        }
+        .play-btn {
+            transition: all 0.3s ease;
+        }
+        .play-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 15px rgba(0, 100, 200, 0.5);
+        }
+        .language-switch {
+            transition: all 0.3s ease;
+        }
+        .language-switch:hover {
+            transform: translateY(-2px);
+        }
+        .puzzle-card {
+            transition: all 0.3s ease;
+            transform-style: preserve-3d;
+        }
+        .puzzle-card:hover {
+            transform: translateY(-5px) rotateX(5deg);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+        .golden-ratio {
+            background: linear-gradient(135deg, #f9d423 0%, #e14fad 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-blue-50 min-h-screen">
+    <!-- Decorative number bubbles -->
+    <div class="number-bubble top-20 left-10"></div>
+    <div class="number-bubble bottom-20 right-10" style="width: 150px; height: 150px;"></div>
+    <div class="number-bubble top-1/3 right-20" style="width: 80px; height: 80px;"></div>
+    
+    <div class="container mx-auto px-4 py-8">
+        <!-- Header with Language Switch -->
+        <header class="flex flex-col md:flex-row justify-between items-center mb-8">
+            <h1 class="text-4xl font-bold text-blue-900 mb-4 md:mb-0">
+                <span class="tr-lang">Sayıların Gizemi</span>
+                <span class="en-lang hidden">The Mystery of Numbers</span>
+            </h1>
+            <div class="flex space-x-2">
+                <button id="tr-btn" class="language-switch bg-blue-700 text-white px-4 py-2 rounded-full shadow-md flex items-center">
+                    <i class="fas fa-language mr-2"></i>
+                    <span>Türkçe</span>
+                </button>
+                <button id="en-btn" class="language-switch bg-gray-700 text-white px-4 py-2 rounded-full shadow-md flex items-center">
+                    <i class="fas fa-language mr-2"></i>
+                    <span>English</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Story Container -->
+        <div class="math-bg rounded-xl p-6 mb-8 relative overflow-hidden shadow-lg">
+            <div class="absolute inset-0 bg-white opacity-80"></div>
+            
+            <div class="relative z-10">
+                <!-- Story Title -->
+                <h2 class="text-3xl font-serif font-semibold mb-6 text-blue-900 border-b border-blue-200 pb-2">
+                    <span class="tr-lang">Sayıların Ardındaki Sırlar</span>
+                    <span class="en-lang hidden">Secrets Behind Numbers</span>
+                </h2>
+                
+                <!-- Audio Controls -->
+                <div class="flex items-center mb-6 space-x-4 bg-white bg-opacity-70 p-3 rounded-lg">
+                    <button id="play-btn" class="play-btn bg-blue-700 text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg">
+                        <i class="fas fa-play text-xl"></i>
+                    </button>
+                    <div class="text-gray-700 font-medium">
+                        <span class="tr-lang">Dinle</span>
+                        <span class="en-lang hidden">Listen</span>
+                    </div>
+                    <select id="voice-select" class="border border-gray-300 rounded px-3 py-1 ml-4 bg-white">
+                        <option value="tr" class="tr-lang">Türkçe Ses</option>
+                        <option value="en" class="en-lang hidden">English Voice</option>
+                    </select>
+                    <div id="progress-container" class="flex-1 bg-gray-200 rounded-full h-2 hidden">
+                        <div id="progress-bar" class="bg-blue-700 h-2 rounded-full" style="width: 0%"></div>
+                    </div>
+                </div>
+                
+                <!-- Story Content -->
+                <div class="prose max-w-none text-gray-800 font-serif">
+                    <div class="tr-lang">
+                        <p class="mb-4">Sayılar evrenin dilidir. Antik çağlardan beri matematikçiler, filozoflar ve bilim insanları sayıların ardındaki gizemleri çözmeye çalışıyor.</p>
+                        
+                        <p class="mb-4"><strong class="text-blue-800">Altın Oran (φ):</strong> 1.618... olarak bilinen bu sihirli sayı, doğada, sanatta ve mimaride sıkça karşımıza çıkar. Bir salyangoz kabuğundaki spiralden, Leonardo da Vinci'nin Mona Lisa'sına kadar bu oran mükemmel estetiğin sırrı olarak kabul edilir.</p>
+                        
+                        <p class="mb-4"><strong class="text-blue-800">Pi Sayısı (π):</strong> 3.14159... diye başlayan bu sonsuz sayı, bir dairenin çevresinin çapına oranıdır. Eski Mısırlılar ve Babilliler tarafından keşfedilen bu sayı, günümüzde bilgisayarlarla trilyonlarca basamağı hesaplanmıştır.</p>
+                        
+                        <p class="mb-4"><strong class="text-blue-800">Fibonacci Dizisi:</strong> 0, 1, 1, 2, 3, 5, 8, 13... şeklinde devam eden bu dizide her sayı kendinden önce gelen iki sayının toplamıdır. Bu dizi doğada bitkilerin yaprak dizilimlerinden, arı kovanlarına kadar pek çok yerde karşımıza çıkar.</p>
+                        
+                        <p class="mb-4"><strong class="text-blue-800">Asal Sayılar:</strong> Sadece 1'e ve kendisine bölünebilen bu özel sayılar (2, 3, 5, 7, 11...) modern şifreleme sistemlerinin temelini oluşturur. En büyük asal sayıyı bulma yarışı hala devam etmektedir.</p>
+                        
+                        <p class="mb-6">Sayıların bu büyülü dünyası, evrenin temel yapı taşlarını anlamamızda bize rehberlik ediyor. Antik Yunan'dan günümüze, sayıların gizemi insanlığı büyülemeye devam ediyor.</p>
+                        
+                        <blockquote class="border-l-4 border-blue-700 pl-4 italic text-blue-900 my-6">
+                            "Tanrı sayıları yarattı, geri kalan her şey insanın eseridir."<br>
+                            - Leopold Kronecker
+                        </blockquote>
+                    </div>
+                    
+                    <div class="en-lang hidden">
+                        <p class="mb-4">Numbers are the language of the universe. Since ancient times, mathematicians, philosophers and scientists have been trying to unravel the mysteries behind numbers.</p>
+                        
+                        <p class="mb-4"><strong class="text-blue-800">Golden Ratio (φ):</strong> Known as 1.618..., this magical number frequently appears in nature, art and architecture. From the spiral of a snail shell to Leonardo da Vinci's Mona Lisa, this ratio is considered the secret of perfect aesthetics.</p>
+                        
+                        <p class="mb-4"><strong class="text-blue-800">Pi (π):</strong> Starting with 3.14159..., this infinite number is the ratio of a circle's circumference to its diameter. Discovered by ancient Egyptians and Babylonians, this number has now been calculated to trillions of digits using computers.</p>
+                        
+                        <p class="mb-4"><strong class="text-blue-800">Fibonacci Sequence:</strong> Continuing as 0, 1, 1, 2, 3, 5, 8, 13..., each number in this sequence is the sum of the two preceding ones. This sequence appears in many places in nature, from the arrangement of leaves on plants to beehives.</p>
+                        
+                        <p class="mb-4"><strong class="text-blue-800">Prime Numbers:</strong> These special numbers divisible only by 1 and themselves (2, 3, 5, 7, 11...) form the basis of modern encryption systems. The race to find the largest prime number continues.</p>
+                        
+                        <p class="mb-6">This magical world of numbers guides us in understanding the fundamental building blocks of the universe. From ancient Greece to the present day, the mystery of numbers continues to fascinate humanity.</p>
+                        
+                        <blockquote class="border-l-4 border-blue-700 pl-4 italic text-blue-900 my-6">
+                            "God created the numbers, all else is the work of man."<br>
+                            - Leopold Kronecker
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Number Puzzles -->
+        <div class="bg-white rounded-xl p-6 mb-8 shadow-md">
+            <h3 class="text-xl font-serif font-semibold mb-6 text-blue-900">
+                <span class="tr-lang">Sayı Bulmacaları</span>
+                <span class="en-lang hidden">Number Puzzles</span>
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Puzzle 1 -->
+                <div class="puzzle-card bg-blue-50 p-4 rounded-lg shadow-md border border-blue-200">
+                    <h4 class="font-serif font-bold text-center text-blue-900 mb-4">
+                        <span class="tr-lang">Bulmaca 1: Fibonacci Sırrı</span>
+                        <span class="en-lang hidden">Puzzle 1: Fibonacci Mystery</span>
+                    </h4>
+                    <p class="text-sm text-gray-700 mb-4">
+                        <span class="tr-lang">Fibonacci dizisinde 10. sayı nedir? (Dizi 0, 1, 1, 2, 3, 5, 8... şeklinde başlar)</span>
+                        <span class="en-lang hidden">What is the 10th number in the Fibonacci sequence? (Sequence starts 0, 1, 1, 2, 3, 5, 8...)</span>
+                    </p>
+                    <input type="number" id="puzzle1" class="border border-blue-300 rounded px-3 py-2 w-full mb-3" placeholder="Cevabınız...">
+                    <button onclick="checkPuzzle(1)" class="bg-blue-700 text-white px-4 py-2 rounded hover:bg-blue-800 transition w-full">
+                        <span class="tr-lang">Kontrol Et</span>
+                        <span class="en-lang hidden">Check</span>
+                    </button>
+                    <p id="puzzle1-feedback" class="text-sm mt-2 hidden"></p>
+                </div>
+                
+                <!-- Puzzle 2 -->
+                <div class="puzzle-card bg-blue-50 p-4 rounded-lg shadow-md border border-blue-200">
+                    <h4 class="font-serif font-bold text-center text-blue-900 mb-4">
+                        <span class="tr-lang">Bulmaca 2: Asal Sayı Avı</span>
+                        <span class="en-lang hidden">Puzzle 2: Prime Number Hunt</span>
+                    </h4>
+                    <p class="text-sm text-gray-700 mb-4">
+                        <span class="tr-lang">1 ile 20 arasında kaç tane asal sayı vardır?</span>
+                        <span class="en-lang hidden">How many prime numbers are there between 1 and 20?</span>
+                    </p>
+                    <input type="number" id="puzzle2" class="border border-blue-300 rounded px-3 py-2 w-full mb-3" placeholder="Cevabınız...">
+                    <button onclick="checkPuzzle(2)" class="bg-blue-700 text-white px-4 py-2 rounded hover:bg-blue-800 transition w-full">
+                        <span class="tr-lang">Kontrol Et</span>
+                        <span class="en-lang hidden">Check</span>
+                    </button>
+                    <p id="puzzle2-feedback" class="text-sm mt-2 hidden"></p>
+                </div>
+                
+                <!-- Puzzle 3 -->
+                <div class="puzzle-card bg-blue-50 p-4 rounded-lg shadow-md border border-blue-200">
+                    <h4 class="font-serif font-bold text-center text-blue-900 mb-4">
+                        <span class="tr-lang">Bulmaca 3: Altın Oran</span>
+                        <span class="en-lang hidden">Puzzle 3: Golden Ratio</span>
+                    </h4>
+                    <p class="text-sm text-gray-700 mb-4">
+                        <span class="tr-lang">Altın oranın yaklaşık değeri nedir? (İlk 3 basamağı)</span>
+                        <span class="en-lang hidden">What is the approximate value of the golden ratio? (First 3 digits)</span>
+                    </p>
+                    <input type="number" step="0.001" id="puzzle3" class="border border-blue-300 rounded px-3 py-2 w-full mb-3" placeholder="Cevabınız...">
+                    <button onclick="checkPuzzle(3)" class="bg-blue-700 text-white px-4 py-2 rounded hover:bg-blue-800 transition w-full">
+                        <span class="tr-lang">Kontrol Et</span>
+                        <span class="en-lang hidden">Check</span>
+                    </button>
+                    <p id="puzzle3-feedback" class="text-sm mt-2 hidden"></p>
+                </div>
+                
+                <!-- Puzzle 4 -->
+                <div class="puzzle-card bg-blue-50 p-4 rounded-lg shadow-md border border-blue-200">
+                    <h4 class="font-serif font-bold text-center text-blue-900 mb-4">
+                        <span class="tr-lang">Bulmaca 4: Pi'nin Basamakları</span>
+                        <span class="en-lang hidden">Puzzle 4: Digits of Pi</span>
+                    </h4>
+                    <p class="text-sm text-gray-700 mb-4">
+                        <span class="tr-lang">Pi sayısının 5. basamağı nedir? (3.14159...)</span>
+                        <span class="en-lang hidden">What is the 5th digit of pi? (3.14159...)</span>
+                    </p>
+                    <input type="number" id="puzzle4" class="border border-blue-300 rounded px-3 py-2 w-full mb-3" placeholder="Cevabınız...">
+                    <button onclick="checkPuzzle(4)" class="bg-blue-700 text-white px-4 py-2 rounded hover:bg-blue-800 transition w-full">
+                        <span class="tr-lang">Kontrol Et</span>
+                        <span class="en-lang hidden">Check</span>
+                    </button>
+                    <p id="puzzle4-feedback" class="text-sm mt-2 hidden"></p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Famous Numbers -->
+        <div class="bg-white rounded-xl p-6 shadow-md">
+            <h3 class="text-xl font-serif font-semibold mb-6 text-blue-900">
+                <span class="tr-lang">Ünlü Sayılar ve Anlamları</span>
+                <span class="en-lang hidden">Famous Numbers and Their Meanings</span>
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Number 1 -->
+                <div class="puzzle-card bg-blue-50 p-4 rounded-lg shadow-md border border-blue-200">
+                    <div class="text-4xl font-bold text-center golden-ratio mb-2">φ</div>
+                    <h4 class="font-serif font-bold text-center text-blue-900 mb-2">
+                        <span class="tr-lang">Altın Oran</span>
+                        <span class="en-lang hidden">Golden Ratio</span>
+                    </h4>
+                    <p class="text-xs text-gray-700">
+                        <span class="tr-lang">≈1.618, doğanın estetik sırrı</span>
+                        <span class="en-lang hidden">≈1.618, nature's aesthetic secret</span>
+                    </p>
+                </div>
+                
+                <!-- Number 2 -->
+                <div class="puzzle-card bg-blue-50 p-4 rounded-lg shadow-md border border-blue-200">
+                    <div class="text-4xl font-bold text-center text-blue-700 mb-2">π</div>
+                    <h4 class="font-serif font-bold text-center text-blue-900 mb-2">Pi</h4>
+                    <p class="text-xs text-gray-700">
+                        <span class="tr-lang">≈3.14159, dairenin sırrı</span>
+                        <span class="en-lang hidden">≈3.14159, the circle's secret</span>
+                    </p>
+                </div>
+                
+                <!-- Number 3 -->
+                <div class="puzzle-card bg-blue-50 p-4 rounded-lg shadow-md border border-blue-200">
+                    <div class="text-4xl font-bold text-center text-blue-700 mb-2">e</div>
+                    <h4 class="font-serif font-bold text-center text-blue-900 mb-2">Euler Sayısı</h4>
+                    <p class="text-xs text-gray-700">
+                        <span class="tr-lang">≈2.71828, büyümenin temeli</span>
+                        <span class="en-lang hidden">≈2.71828, foundation of growth</span>
+                    </p>
+                </div>
+                
+                <!-- Number 4 -->
+                <div class="puzzle-card bg-blue-50 p-4 rounded-lg shadow-md border border-blue-200">
+                    <div class="text-4xl font-bold text-center text-blue-700 mb-2">i</div>
+                    <h4 class="font-serif font-bold text-center text-blue-900 mb-2">
+                        <span class="tr-lang">Sanal Birim</span>
+                        <span class="en-lang hidden">Imaginary Unit</span>
+                    </h4>
+                    <p class="text-xs text-gray-700">
+                        <span class="tr-lang">√-1, hayali dünyanın anahtarı</span>
+                        <span class="en-lang hidden">√-1, key to imaginary world</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Language Switch
+        document.getElementById('tr-btn').addEventListener('click', function() {
+            document.querySelectorAll('.tr-lang').forEach(el => el.classList.remove('hidden'));
+            document.querySelectorAll('.en-lang').forEach(el => el.classList.add('hidden'));
+            document.getElementById('tr-btn').classList.remove('bg-gray-700');
+            document.getElementById('tr-btn').classList.add('bg-blue-700');
+            document.getElementById('en-btn').classList.remove('bg-blue-700');
+            document.getElementById('en-btn').classList.add('bg-gray-700');
+            document.getElementById('voice-select').innerHTML = `
+                <option value="tr">Türkçe Ses</option>
+                <option value="en">English Voice</option>
+            `;
+        });
+
+        document.getElementById('en-btn').addEventListener('click', function() {
+            document.querySelectorAll('.en-lang').forEach(el => el.classList.remove('hidden'));
+            document.querySelectorAll('.tr-lang').forEach(el => el.classList.add('hidden'));
+            document.getElementById('en-btn').classList.remove('bg-gray-700');
+            document.getElementById('en-btn').classList.add('bg-blue-700');
+            document.getElementById('tr-btn').classList.remove('bg-blue-700');
+            document.getElementById('tr-btn').classList.add('bg-gray-700');
+            document.getElementById('voice-select').innerHTML = `
+                <option value="en">English Voice</option>
+                <option value="tr">Türkçe Ses</option>
+            `;
+        });
+
+        // Text-to-Speech
+        const playBtn = document.getElementById('play-btn');
+        const voiceSelect = document.getElementById('voice-select');
+        const progressContainer = document.getElementById('progress-container');
+        const progressBar = document.getElementById('progress-bar');
+        
+        let speech = null;
+        let isPlaying = false;
+        
+        playBtn.addEventListener('click', function() {
+            if (isPlaying) {
+                stopSpeech();
+            } else {
+                startSpeech();
+            }
+        });
+        
+        function startSpeech() {
+            if (speech) {
+                window.speechSynthesis.cancel();
+            }
+            
+            const selectedLanguage = voiceSelect.value;
+            const textToSpeak = selectedLanguage === 'tr' 
+                ? document.querySelector('.tr-lang').textContent 
+                : document.querySelector('.en-lang').textContent;
+            
+            speech = new SpeechSynthesisUtterance();
+            speech.text = textToSpeak;
+            speech.lang = selectedLanguage === 'tr' ? 'tr-TR' : 'en-US';
+            
+            // Find appropriate voice
+            const voices = window.speechSynthesis.getVoices();
+            const preferredVoice = voices.find(voice => 
+                selectedLanguage === 'tr' 
+                    ? voice.lang === 'tr-TR' 
+                    : voice.lang.startsWith('en-') && voice.name.includes('English')
+            );
+            
+            if (preferredVoice) {
+                speech.voice = preferredVoice;
+            }
+            
+            // Progress tracking
+            let startTime;
+            speech.onstart = function() {
+                isPlaying = true;
+                playBtn.innerHTML = '<i class="fas fa-pause text-xl"></i>';
+                progressContainer.classList.remove('hidden');
+                startTime = Date.now();
+            };
+            
+            speech.onend = function() {
+                isPlaying = false;
+                playBtn.innerHTML = '<i class="fas fa-play text-xl"></i>';
+                progressBar.style.width = '0%';
+            };
+            
+            speech.onboundary = function(event) {
+                const elapsed = Date.now() - startTime;
+                const estimatedTotal = (speech.text.length / event.charIndex) * elapsed;
+                const progress = (elapsed / estimatedTotal) * 100;
+                progressBar.style.width = `${Math.min(100, progress)}%`;
+            };
+            
+            window.speechSynthesis.speak(speech);
+        }
+        
+        function stopSpeech() {
+            if (window.speechSynthesis.speaking) {
+                window.speechSynthesis.cancel();
+                isPlaying = false;
+                playBtn.innerHTML = '<i class="fas fa-play text-xl"></i>';
+                progressBar.style.width = '0%';
+            }
+        }
+        
+        // Load voices when they become available
+        window.speechSynthesis.onvoiceschanged = function() {
+            const voices = window.speechSynthesis.getVoices();
+        };
+        
+        // Puzzle checking function
+        function checkPuzzle(puzzleNum) {
+            const answer = document.getElementById(`puzzle${puzzleNum}`).value;
+            const feedback = document.getElementById(`puzzle${puzzleNum}-feedback`);
+            
+            let isCorrect = false;
+            let correctAnswer = "";
+            let explanation = "";
+            
+            if (document.querySelector('.tr-lang')) {
+                // Turkish answers
+                switch(puzzleNum) {
+                    case 1:
+                        isCorrect = answer == "34";
+                        correctAnswer = "34";
+                        explanation = "Fibonacci dizisi: 0, 1, 1, 2, 3, 5, 8, 13, 21, 34";
+                        break;
+                    case 2:
+                        isCorrect = answer == "8";
+                        correctAnswer = "8";
+                        explanation = "2, 3, 5, 7, 11, 13, 17, 19";
+                        break;
+                    case 3:
+                        isCorrect = Math.abs(answer - 1.618) < 0.001;
+                        correctAnswer = "1.618";
+                        explanation = "Altın oran ≈1.61803398875";
+                        break;
+                    case 4:
+                        isCorrect = answer == "9";
+                        correctAnswer = "9";
+                        explanation = "Pi: 3.1415926535... (5. basamak 9)";
+                        break;
+                }
+            } else {
+                // English answers
+                switch(puzzleNum) {
+                    case 1:
+                        isCorrect = answer == "34";
+                        correctAnswer = "34";
+                        explanation = "Fibonacci sequence: 0, 1, 1, 2, 3, 5, 8, 13, 21, 34";
+                        break;
+                    case 2:
+                        isCorrect = answer == "8";
+                        correctAnswer = "8";
+                        explanation = "2, 3, 5, 7, 11, 13, 17, 19";
+                        break;
+                    case 3:
+                        isCorrect = Math.abs(answer - 1.618) < 0.001;
+                        correctAnswer = "1.618";
+                        explanation = "Golden ratio ≈1.61803398875";
+                        break;
+                    case 4:
+                        isCorrect = answer == "9";
+                        correctAnswer = "9";
+                        explanation = "Pi: 3.1415926535... (5th digit is 9)";
+                        break;
+                }
+            }
+            
+            feedback.classList.remove('hidden');
+            if (isCorrect) {
+                feedback.textContent = document.querySelector('.tr-lang') 
+                    ? `Doğru! ${explanation}` 
+                    : `Correct! ${explanation}`;
+                feedback.className = "text-sm mt-2 text-green-600";
+            } else {
+                feedback.textContent = document.querySelector('.tr-lang') 
+                    ? `Yanlış. Doğru cevap: ${correctAnswer}. ${explanation}` 
+                    : `Incorrect. Right answer: ${correctAnswer}. ${explanation}`;
+                feedback.className = "text-sm mt-2 text-red-600";
+            }
+        }
+        
+        // Initialize with Turkish
+        document.getElementById('tr-btn').click();
+    </script>
+</body>
+</html>
