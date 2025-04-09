@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <link rel="shortcut icon" href="images/favicon.png" type="images/png">
-<body class="min-h-screen">
+<body class="min-h-screen flex flex-col"> 
     <!-- Header/Navbar -->
     <header class="gradient-bg text-white shadow-md">
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
@@ -42,7 +42,7 @@
     </header>
 
     <!-- Main Content -->
-    <main class="container mx-auto px-4 py-8">
+    <main class="flex-1 container mx-auto px-4 py-8">
         <!-- Hero Section -->
         <section class="mb-12 text-center">
             <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-800" data-tr="discover_stories">Eğitici Hikayeler Keşfedin</h2>
@@ -183,22 +183,22 @@
   </div>
   
 
-        <!-- Recent Stories -->
-        <section>
-            <div class="flex justify-between items-center mb-6">
-                <h3 class="text-xl font-semibold text-gray-700" data-tr="recent_stories">Yeni Hikayeler</h3>
-                <button class="text-purple-600 hover:text-purple-800 font-medium">
-                    <span data-tr="see_all">Tümünü Gör</span> <i class="fas fa-chevron-right ml-1"></i>
-                </button>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+  <section class="mb-12">
+    <div class="flex justify-between items-center mb-6">
+        <h3 class="text-xl font-semibold text-gray-700" data-tr="featured_stories">Yeni Hikayeler</h3>
+        <button class="text-purple-600 hover:text-purple-800 font-medium">
+            <span data-tr="see_all">Tümünü Gör</span> <i class="fas fa-chevron-right ml-1"></i>
+        </button>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+               
                 <!-- Story Card 4 -->
                <!-- Sayıların Gizemi Kartı -->
 <div class="feature-card bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transform transition-all hover:scale-105">
     <a href="numbers.html" class="block">
       <div class="relative">
         <!-- Kart Görseli -->
-       <!-- Kart Görseli -->
        <div class="h-48 overflow-hidden bg-cover bg-center bg-no-repeat" 
        style="background-image: url('images/numbers.png')">
     </div>
@@ -303,28 +303,28 @@
     </div>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-8">
+    <footer class="bg-gray-800 text-white py-8 w-full mt-auto">
         <div class="container mx-auto px-4">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="mb-4 md:mb-0">
-                    <div class="flex items-center space-x-2">
-                        <i class="fas fa-book-open text-2xl"></i>
-                        <h2 class="text-xl font-bold">Edu Story AI</h2>
-                    </div>
-                    <p class="text-gray-400 mt-2 text-sm" data-tr="footer_desc">Herkes için AI destekli eğitici hikayeler.</p>
-                </div>
-                <div class="flex space-x-6">
-                    <a href="#" class="hover:text-purple-300 transition" data-tr="about">Hakkında</a>
-                    <a href="#" class="hover:text-purple-300 transition" data-tr="contact">İletişim</a>
-                    <a href="#" class="hover:text-purple-300 transition" data-tr="privacy">Gizlilik</a>
-                    <a href="#" class="hover:text-purple-300 transition" data-tr="terms">Koşullar</a>
-                </div>
+          <div class="flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-4 md:mb-0">
+              <div class="flex items-center space-x-2">
+                <i class="fas fa-book-open text-2xl"></i>
+                <h2 class="text-xl font-bold">Edu Story AI</h2>
+              </div>
+              <p class="text-gray-400 mt-2 text-sm">Herkes için AI destekli eğitici hikayeler.</p>
             </div>
-            <div class="border-t border-gray-700 mt-8 pt-6 text-center text-gray-400 text-sm">
-                &copy; 2025 Edu Story AI. <span data-tr="rights">Tüm hakları saklıdır.</span>
+            <div class="flex flex-wrap justify-center gap-x-6 gap-y-2">
+              <a href="#" class="hover:text-purple-300 transition">Hakkında</a>
+              <a href="#" class="hover:text-purple-300 transition">İletişim</a>
+              <a href="#" class="hover:text-purple-300 transition">Gizlilik</a>
+              <a href="#" class="hover:text-purple-300 transition">Koşullar</a>
             </div>
+          </div>
+          <div class="border-t border-gray-700 mt-8 pt-6 text-center text-gray-400 text-sm">
+            &copy; 2025 Edu Story AI. Tüm hakları saklıdır.
+          </div>
         </div>
-    </footer>
+      </footer>
 
     <script>
         // Translation data

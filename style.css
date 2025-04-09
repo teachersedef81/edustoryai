@@ -153,7 +153,20 @@ body {
     overflow: visible;
 }
 
-
+   /* style.css dosyanıza ekleyin */
+html, body {
+    height: 100%;
+  }
   
+  body {
+    display: flex;
+    flex-direction: column;
+  }
   
-
+  main {
+    flex: 1 0 auto; /* Esnek büyüme sağlar */
+  }
+  
+  footer {
+    flex-shrink: 0; /* Küçülmeyi engeller */
+  }
