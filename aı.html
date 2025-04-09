@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Devrimi - Yapay Zeka Hikayesi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .fade-in {
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .story-text {
+            line-height: 1.8;
+            text-align: justify;
+        }
+        .audio-controls {
+            transition: all 0.3s ease;
+        }
+        .audio-controls:hover {
+            transform: scale(1.05);
+        }
+        .language-switch {
+            transition: all 0.3s ease;
+        }
+        .language-switch:hover {
+            transform: translateY(-2px);
+        }
+        .scroll-indicator {
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-b from-blue-50 to-purple-50 min-h-screen font-sans">
+    <div class="container mx-auto px-4 py-8 max-w-4xl">
+        <!-- Language Switch -->
+        <div class="flex justify-end mb-6">
+            <div class="bg-white rounded-full shadow-md p-1">
+                <button id="lang-tr" class="language-switch px-4 py-2 rounded-full bg-blue-600 text-white font-medium">Türkçe</button>
+                <button id="lang-en" class="language-switch px-4 py-2 rounded-full bg-transparent text-gray-600 font-medium">English</button>
+            </div>
+        </div>
+
+        <!-- Header -->
+        <header class="text-center mb-12 fade-in">
+            <h1 id="title" class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">Yapay Zeka Devrimi</h1>
+            <p id="subtitle" class="text-xl text-gray-600">Dünyamızı Nasıl Değiştiriyor?</p>
+            <div class="mt-6 flex justify-center">
+                <button id="audio-btn" class="audio-controls bg-purple-600 hover:bg-purple-700 text-white rounded-full p-4 shadow-lg">
+                    <i class="fas fa-play text-xl"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- Story Content -->
+        <div class="bg-white rounded-xl shadow-lg p-6 md:p-8 mb-12 fade-in">
+            <div id="story-content-tr" class="story-content">
+                <div class="story-text mb-8 text-gray-700">
+                    <p class="mb-4">Yapay zeka, son on yılda hayatımızın her alanında devrim yarattı. İlk başlarda sadece bilim kurgu filmlerinde gördüğümüz bu teknoloji, artık günlük yaşantımızın ayrılmaz bir parçası haline geldi.</p>
+                    
+                    <p class="mb-4">2000'lerin başında, yapay zeka araştırmaları akademik çevrelerle sınırlıyken, bugün her sektörde kendine yer buldu. Sağlık hizmetlerinden finans sektörüne, eğitimden tarıma kadar pek çok alanda yapay zeka çözümleri hayatımızı kolaylaştırıyor.</p>
+                    
+                    <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-4 rounded-r">
+                        <p class="font-medium text-blue-800">Örneğin, tıp alanında yapay zeka destekli tanı sistemleri, doktorların hastalıkları daha erken ve daha doğru teşhis etmesine yardımcı oluyor. Radyoloji görüntülerini analiz eden algoritmalar, insan gözünün kaçırabileceği detayları yakalayabiliyor.</p>
+                    </div>
+                    
+                    <p class="mb-4">Günlük hayatımızda ise akıllı asistanlar, kişiselleştirilmiş alışveriş deneyimleri ve akıllı ev sistemleri yapay zekanın somut çıktıları olarak karşımıza çıkıyor. Siri, Alexa ve Google Asistan gibi uygulamalar artık milyonlarca insanın günlük rutininin bir parçası.</p>
+                    
+                    <p class="mb-4">Ancak bu devrim sadece kolaylıklar getirmiyor. Yapay zekanın etik kullanımı, iş gücü piyasasına etkileri ve mahremiyet konuları da ciddi tartışmalara yol açıyor. Uzmanlar, bu teknolojinin sorumlu bir şekilde geliştirilmesi ve kullanılması gerektiği konusunda uyarıyor.</p>
+                    
+                    <div class="bg-purple-50 border-l-4 border-purple-500 p-4 mb-4 rounded-r">
+                        <p class="font-medium text-purple-800">Gelecekte ise yapay zeka, iklim değişikliğiyle mücadeleden uzay keşiflerine kadar insanlığın karşılaştığı en büyük sorunların çözümüne katkı sağlayabilir. Ancak bu potansiyelin gerçekleşmesi için etik çerçevelerin oluşturulması ve teknolojinin insanlığın yararına kullanılması şart.</p>
+                    </div>
+                    
+                    <p class="mb-4">Yapay zeka devrimi henüz başlangıç aşamasında. Önümüzdeki yıllarda bu teknolojinin hayatımızı nasıl dönüştüreceğini hep birlikte göreceğiz. Teknolojinin bize sunduğu fırsatları değerlendirirken, aynı zamanda ortaya çıkardığı zorluklarla da başa çıkmayı öğrenmemiz gerekecek.</p>
+                </div>
+                
+                <div class="flex justify-center mt-8">
+                    <div class="scroll-indicator text-blue-500 text-2xl">
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="story-content-en" class="story-content hidden">
+                <div class="story-text mb-8 text-gray-700">
+                    <p class="mb-4">Artificial intelligence has revolutionized every aspect of our lives in the last decade. What we once saw only in science fiction movies has now become an integral part of our daily lives.</p>
+                    
+                    <p class="mb-4">In the early 2000s, AI research was limited to academic circles, but today it has found its place in every sector. AI solutions are making our lives easier in many fields, from healthcare to finance, from education to agriculture.</p>
+                    
+                    <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-4 rounded-r">
+                        <p class="font-medium text-blue-800">For example, in medicine, AI-assisted diagnostic systems help doctors diagnose diseases earlier and more accurately. Algorithms that analyze radiology images can detect details that the human eye might miss.</p>
+                    </div>
+                    
+                    <p class="mb-4">In our daily lives, smart assistants, personalized shopping experiences, and smart home systems emerge as tangible outputs of artificial intelligence. Applications like Siri, Alexa, and Google Assistant are now part of the daily routine of millions of people.</p>
+                    
+                    <p class="mb-4">But this revolution doesn't just bring conveniences. The ethical use of AI, its impact on the labor market, and privacy issues are also causing serious debates. Experts warn that this technology must be developed and used responsibly.</p>
+                    
+                    <div class="bg-purple-50 border-l-4 border-purple-500 p-4 mb-4 rounded-r">
+                        <p class="font-medium text-purple-800">In the future, AI could contribute to solving humanity's greatest challenges, from fighting climate change to space exploration. But realizing this potential requires establishing ethical frameworks and using the technology for the benefit of humanity.</p>
+                    </div>
+                    
+                    <p class="mb-4">The AI revolution is still in its early stages. In the coming years, we will all see how this technology transforms our lives. While taking advantage of the opportunities technology offers us, we will also need to learn to deal with the challenges it presents.</p>
+                </div>
+                
+                <div class="flex justify-center mt-8">
+                    <div class="scroll-indicator text-blue-500 text-2xl">
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Timeline -->
+        <div class="bg-white rounded-xl shadow-lg p-6 md:p-8 mb-12 fade-in">
+            <h2 id="timeline-title" class="text-2xl font-bold text-gray-800 mb-6">Yapay Zeka Tarihinde Önemli Anlar</h2>
+            
+            <div class="relative">
+                <!-- Timeline line -->
+                <div class="absolute left-4 h-full w-1 bg-blue-200 top-0 md:left-1/2 md:-ml-1"></div>
+                
+                <!-- Timeline items -->
+                <div class="space-y-8">
+                    <!-- Item 1 -->
+                    <div class="relative pl-10 md:pl-0 md:flex md:odd:flex-row-reverse">
+                        <div class="md:w-1/2 md:px-6">
+                            <div class="bg-blue-100 p-4 rounded-lg shadow-sm">
+                                <h3 id="timeline-item1-title" class="font-bold text-blue-800">1956: Yapay Zeka Teriminin Doğuşu</h3>
+                                <p id="timeline-item1-desc" class="text-gray-700 mt-2">Dartmouth Konferansı'nda John McCarthy tarafından "yapay zeka" terimi ilk kez kullanıldı ve bir araştırma alanı olarak tanımlandı.</p>
+                            </div>
+                        </div>
+                        <div class="absolute w-4 h-4 bg-blue-600 rounded-full left-2 top-4 md:left-1/2 md:-ml-2"></div>
+                    </div>
+                    
+                    <!-- Item 2 -->
+                    <div class="relative pl-10 md:pl-0 md:flex md:odd:flex-row-reverse">
+                        <div class="md:w-1/2 md:px-6">
+                            <div class="bg-purple-100 p-4 rounded-lg shadow-sm">
+                                <h3 id="timeline-item2-title" class="font-bold text-purple-800">1997: Deep Blue Satrançta İnsanı Yendi</h3>
+                                <p id="timeline-item2-desc" class="text-gray-700 mt-2">IBM'in Deep Blue bilgisayarı, dünya satranç şampiyonu Garry Kasparov'u yenerek büyük bir dönüm noktasına imza attı.</p>
+                            </div>
+                        </div>
+                        <div class="absolute w-4 h-4 bg-purple-600 rounded-full left-2 top-4 md:left-1/2 md:-ml-2"></div>
+                    </div>
+                    
+                    <!-- Item 3 -->
+                    <div class="relative pl-10 md:pl-0 md:flex md:odd:flex-row-reverse">
+                        <div class="md:w-1/2 md:px-6">
+                            <div class="bg-blue-100 p-4 rounded-lg shadow-sm">
+                                <h3 id="timeline-item3-title" class="font-bold text-blue-800">2011: Siri'nin Tanıtımı</h3>
+                                <p id="timeline-item3-desc" class="text-gray-700 mt-2">Apple'ın kişisel asistanı Siri, akıllı telefonlarla birlikte yapay zekayı milyonların günlük hayatına soktu.</p>
+                            </div>
+                        </div>
+                        <div class="absolute w-4 h-4 bg-blue-600 rounded-full left-2 top-4 md:left-1/2 md:-ml-2"></div>
+                    </div>
+                    
+                    <!-- Item 4 -->
+                    <div class="relative pl-10 md:pl-0 md:flex md:odd:flex-row-reverse">
+                        <div class="md:w-1/2 md:px-6">
+                            <div class="bg-purple-100 p-4 rounded-lg shadow-sm">
+                                <h3 id="timeline-item4-title" class="font-bold text-purple-800">2022: ChatGPT'nin Yükselişi</h3>
+                                <p id="timeline-item4-desc" class="text-gray-700 mt-2">OpenAI'ın ChatGPT'si, büyük dil modellerinin gücünü göstererek yapay zekanın yeni bir çağını başlattı.</p>
+                            </div>
+                        </div>
+                        <div class="absolute w-4 h-4 bg-purple-600 rounded-full left-2 top-4 md:left-1/2 md:-ml-2"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="text-center text-gray-600 text-sm mt-12 fade-in">
+            <p id="footer-text">© 2023 Yapay Zeka Devrimi - Tüm hakları saklıdır</p>
+            <div class="mt-4 flex justify-center space-x-4">
+                <a href="#" class="text-blue-600 hover:text-blue-800"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="text-blue-800 hover:text-blue-600"><i class="fab fa-linkedin"></i></a>
+                <a href="#" class="text-gray-800 hover:text-gray-600"><i class="fab fa-github"></i></a>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Audio Element -->
+    <audio id="story-audio" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
+
+    <script>
+        // Language switching functionality
+        const langTrBtn = document.getElementById('lang-tr');
+        const langEnBtn = document.getElementById('lang-en');
+        const storyContentTr = document.getElementById('story-content-tr');
+        const storyContentEn = document.getElementById('story-content-en');
+        
+        // English translations
+        const translations = {
+            title: "The AI Revolution",
+            subtitle: "How It's Changing Our World",
+            timelineTitle: "Key Moments in AI History",
+            timelineItems: [
+                {title: "1956: Birth of AI Term", desc: "At the Dartmouth Conference, John McCarthy first used the term 'artificial intelligence' and defined it as a research field."},
+                {title: "1997: Deep Blue Beats Human at Chess", desc: "IBM's Deep Blue computer defeated world chess champion Garry Kasparov, marking a major milestone."},
+                {title: "2011: Introduction of Siri", desc: "Apple's personal assistant Siri brought artificial intelligence into the daily lives of millions with smartphones."},
+                {title: "2022: The Rise of ChatGPT", desc: "OpenAI's ChatGPT demonstrated the power of large language models, ushering in a new era of AI."}
+            ],
+            footerText: "© 2023 AI Revolution - All rights reserved"
+        };
+        
+        langTrBtn.addEventListener('click', () => {
+            // Switch to Turkish
+            langTrBtn.classList.add('bg-blue-600', 'text-white');
+            langTrBtn.classList.remove('bg-transparent', 'text-gray-600');
+            langEnBtn.classList.add('bg-transparent', 'text-gray-600');
+            langEnBtn.classList.remove('bg-blue-600', 'text-white');
+            
+            document.getElementById('title').textContent = 'Yapay Zeka Devrimi';
+            document.getElementById('subtitle').textContent = 'Dünyamızı Nasıl Değiştiriyor?';
+            document.getElementById('timeline-title').textContent = 'Yapay Zeka Tarihinde Önemli Anlar';
+            
+            // Update timeline items
+            document.getElementById('timeline-item1-title').textContent = '1956: Yapay Zeka Teriminin Doğuşu';
+            document.getElementById('timeline-item1-desc').textContent = 'Dartmouth Konferansı\'nda John McCarthy tarafından "yapay zeka" terimi ilk kez kullanıldı ve bir araştırma alanı olarak tanımlandı.';
+            
+            document.getElementById('timeline-item2-title').textContent = '1997: Deep Blue Satrançta İnsanı Yendi';
+            document.getElementById('timeline-item2-desc').textContent = 'IBM\'in Deep Blue bilgisayarı, dünya satranç şampiyonu Garry Kasparov\'u yenerek büyük bir dönüm noktasına imza attı.';
+            
+            document.getElementById('timeline-item3-title').textContent = '2011: Siri\'nin Tanıtımı';
+            document.getElementById('timeline-item3-desc').textContent = 'Apple\'ın kişisel asistanı Siri, akıllı telefonlarla birlikte yapay zekayı milyonların günlük hayatına soktu.';
+            
+            document.getElementById('timeline-item4-title').textContent = '2022: ChatGPT\'nin Yükselişi';
+            document.getElementById('timeline-item4-desc').textContent = 'OpenAI\'ın ChatGPT\'si, büyük dil modellerinin gücünü göstererek yapay zekanın yeni bir çağını başlattı.';
+            
+            document.getElementById('footer-text').textContent = '© 2023 Yapay Zeka Devrimi - Tüm hakları saklıdır';
+            
+            storyContentTr.classList.remove('hidden');
+            storyContentEn.classList.add('hidden');
+        });
+        
+        langEnBtn.addEventListener('click', () => {
+            // Switch to English
+            langEnBtn.classList.add('bg-blue-600', 'text-white');
+            langEnBtn.classList.remove('bg-transparent', 'text-gray-600');
+            langTrBtn.classList.add('bg-transparent', 'text-gray-600');
+            langTrBtn.classList.remove('bg-blue-600', 'text-white');
+            
+            document.getElementById('title').textContent = translations.title;
+            document.getElementById('subtitle').textContent = translations.subtitle;
+            document.getElementById('timeline-title').textContent = translations.timelineTitle;
+            
+            // Update timeline items
+            document.getElementById('timeline-item1-title').textContent = translations.timelineItems[0].title;
+            document.getElementById('timeline-item1-desc').textContent = translations.timelineItems[0].desc;
+            
+            document.getElementById('timeline-item2-title').textContent = translations.timelineItems[1].title;
+            document.getElementById('timeline-item2-desc').textContent = translations.timelineItems[1].desc;
+            
+            document.getElementById('timeline-item3-title').textContent = translations.timelineItems[2].title;
+            document.getElementById('timeline-item3-desc').textContent = translations.timelineItems[2].desc;
+            
+            document.getElementById('timeline-item4-title').textContent = translations.timelineItems[3].title;
+            document.getElementById('timeline-item4-desc').textContent = translations.timelineItems[3].desc;
+            
+            document.getElementById('footer-text').textContent = translations.footerText;
+            
+            storyContentEn.classList.remove('hidden');
+            storyContentTr.classList.add('hidden');
+        });
+        
+        // Audio functionality
+        const audioBtn = document.getElementById('audio-btn');
+        const storyAudio = document.getElementById('story-audio');
+        let isPlaying = false;
+        
+        audioBtn.addEventListener('click', () => {
+            if (isPlaying) {
+                storyAudio.pause();
+                audioBtn.innerHTML = '<i class="fas fa-play text-xl"></i>';
+                audioBtn.classList.remove('bg-red-600');
+                audioBtn.classList.add('bg-purple-600');
+            } else {
+                storyAudio.play();
+                audioBtn.innerHTML = '<i class="fas fa-pause text-xl"></i>';
+                audioBtn.classList.remove('bg-purple-600');
+                audioBtn.classList.add('bg-red-600');
+            }
+            isPlaying = !isPlaying;
+        });
+        
+        // When audio ends
+        storyAudio.addEventListener('ended', () => {
+            audioBtn.innerHTML = '<i class="fas fa-play text-xl"></i>';
+            audioBtn.classList.remove('bg-red-600');
+            audioBtn.classList.add('bg-purple-600');
+            isPlaying = false;
+        });
+        
+        // Smooth scroll for the indicator
+        document.querySelector('.scroll-indicator').addEventListener('click', () => {
+            document.querySelector('.timeline').scrollIntoView({ 
+                behavior: 'smooth' 
+            });
+        });
+    </script>
+</body>
+</html>
