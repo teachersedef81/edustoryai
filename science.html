@@ -385,18 +385,19 @@
                 const isTurkish = !document.querySelector('.tr-lang').classList.contains('hidden');
                 
                 if (score === 2) {
-                    feedback.textContent = isTurkish
-                        ? 'Mükemmel! Kuantum fiziğini çok iyi anlıyorsunuz!' 
-                        : 'Excellent! You understand quantum physics very well!';
-                } else if (score === 1) {
-                    feedback.textContent = isTurkish
-                        ? 'Fena değil! Biraz daha çalışırsanız kuantum uzmanı olacaksınız!' 
-                        : 'Not bad! With a little more study, you'll be a quantum expert!';
-                } else {
-                    feedback.textContent = isTurkish
-                        ? 'Kuantum dünyası hakkında daha fazla okumalısınız. Hikayeyi tekrar dinleyin!' 
-                        : 'You should read more about the quantum world. Listen to the story again!';
-                }
+    feedback.textContent = isTurkish
+        ? 'Mükemmel! Kuantum fiziğini çok iyi anlıyorsunuz!' 
+        : 'Excellent! You understand quantum physics very well!';
+} else if (score === 1) {
+    feedback.textContent = isTurkish
+        ? 'Fena değil! Biraz daha çalışırsanız kuantum uzmanı olacaksınız!' 
+        : "Not bad! With a little more study, you'll be a quantum expert!";
+} else {
+    feedback.textContent = isTurkish
+        ? 'Kuantum dünyası hakkında daha fazla okumalısınız. Hikayeyi tekrar dinleyin!' 
+        : 'You should read more about the quantum world, Listen to the story again!';
+}
+
             });
         });
         
