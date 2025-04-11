@@ -226,34 +226,54 @@
     </div>
 
     <script>
-        // Language Switch
+        // Language Switch - Düzeltilmiş kod
         document.getElementById('tr-btn').addEventListener('click', function() {
+            // Tüm Türkçe elemanları göster
             document.querySelectorAll('.tr-lang').forEach(el => el.classList.remove('hidden'));
+            // Tüm İngilizce elemanları gizle
             document.querySelectorAll('.en-lang').forEach(el => el.classList.add('hidden'));
+            // Buton stillerini güncelle
             document.getElementById('tr-btn').classList.remove('bg-gray-600');
             document.getElementById('tr-btn').classList.add('bg-blue-600');
             document.getElementById('en-btn').classList.remove('bg-blue-600');
             document.getElementById('en-btn').classList.add('bg-gray-600');
-            document.getElementById('voice-select').innerHTML = `
-                <option value="tr">Türkçe Ses</option>
-                <option value="en">English Voice</option>
-            `;
+            // Ses seçeneğini güncelle
+            updateVoiceOptions('tr');
         });
-
+    
         document.getElementById('en-btn').addEventListener('click', function() {
+            // Tüm İngilizce elemanları göster
             document.querySelectorAll('.en-lang').forEach(el => el.classList.remove('hidden'));
+            // Tüm Türkçe elemanları gizle
             document.querySelectorAll('.tr-lang').forEach(el => el.classList.add('hidden'));
+            // Buton stillerini güncelle
             document.getElementById('en-btn').classList.remove('bg-gray-600');
             document.getElementById('en-btn').classList.add('bg-blue-600');
             document.getElementById('tr-btn').classList.remove('bg-blue-600');
             document.getElementById('tr-btn').classList.add('bg-gray-600');
-            document.getElementById('voice-select').innerHTML = `
-                <option value="en">English Voice</option>
-                <option value="tr">Türkçe Ses</option>
-            `;
+            // Ses seçeneğini güncelle
+            updateVoiceOptions('en');
         });
-
-        // Text-to-Speech
+    
+        // Ses seçeneklerini güncelleyen yardımcı fonksiyon
+        function updateVoiceOptions(defaultLang) {
+            const voiceSelect = document.getElementById('voice-select');
+            voiceSelect.innerHTML = '';
+            
+            // Varsayılan dil için seçeneği ekle
+            const defaultOption = document.createElement('option');
+            defaultOption.value = defaultLang;
+            defaultOption.textContent = defaultLang === 'tr' ? 'Türkçe Ses' : 'English Voice';
+            voiceSelect.appendChild(defaultOption);
+            
+            // Diğer dil için seçeneği ekle
+            const otherOption = document.createElement('option');
+            otherOption.value = defaultLang === 'tr' ? 'en' : 'tr';
+            otherOption.textContent = defaultLang === 'tr' ? 'English Voice' : 'Türkçe Ses';
+            voiceSelect.appendChild(otherOption);
+        }
+    
+        // Text-to-Speech funcionality
         const playBtn = document.getElementById('play-btn');
         const voiceSelect = document.getElementById('voice-select');
         const progressContainer = document.getElementById('progress-container');
@@ -276,27 +296,35 @@
             }
             
             const selectedLanguage = voiceSelect.value;
-            const textToSpeak = selectedLanguage === 'tr' 
-                ? document.querySelector('.tr-lang').textContent 
-                : document.querySelector('.en-lang').textContent;
+            // Seçilen dile göre metin içeriğini al
+            let textToSpeak;
+            if (selectedLanguage === 'tr') {
+                // Türkçe seçilen tüm görünür içeriği topla
+                const turkishContent = document.querySelectorAll('.tr-lang:not(.hidden)');
+                textToSpeak = Array.from(turkishContent).map(el => el.textContent.trim()).join(' ');
+            } else {
+                // İngilizce seçilen tüm görünür içeriği topla
+                const englishContent = document.querySelectorAll('.en-lang:not(.hidden)');
+                textToSpeak = Array.from(englishContent).map(el => el.textContent.trim()).join(' ');
+            }
             
             speech = new SpeechSynthesisUtterance();
             speech.text = textToSpeak;
             speech.lang = selectedLanguage === 'tr' ? 'tr-TR' : 'en-US';
             
-            // Find appropriate voice
+            // Uygun sesi bul
             const voices = window.speechSynthesis.getVoices();
             const preferredVoice = voices.find(voice => 
                 selectedLanguage === 'tr' 
                     ? voice.lang === 'tr-TR' 
-                    : voice.lang.startsWith('en-') && voice.name.includes('English')
+                    : voice.lang.startsWith('en-')
             );
             
             if (preferredVoice) {
                 speech.voice = preferredVoice;
             }
             
-            // Progress tracking
+            // İlerleme izleme
             let startTime;
             speech.onstart = function() {
                 isPlaying = true;
@@ -330,37 +358,46 @@
             }
         }
         
-        // Load voices when they become available
+        // Sesler kullanılabilir olduğunda yükle
         window.speechSynthesis.onvoiceschanged = function() {
-            const voices = window.speechSynthesis.getVoices();
+            updateVoiceOptions('tr'); // Sayfa yüklendiğinde varsayılan olarak Türkçe
         };
         
-        // Quiz functionality
-        document.getElementById('check-answers').addEventListener('click', function() {
-            const q1 = document.querySelector('input[name="q1"]:checked')?.value || '0';
-            const q2 = document.querySelector('input[name="q2"]:checked')?.value || '0';
+        // Sayfa yüklendiğinde çalışacak kodlar
+        window.addEventListener('DOMContentLoaded', function() {
+            // Varsayılan olarak Türkçe dili seçili olarak başlat
+            document.getElementById('tr-btn').click();
             
-            const score = parseInt(q1) + parseInt(q2);
-            const resultDiv = document.getElementById('quiz-result');
-            const scoreSpan = document.getElementById('score');
-            const feedback = document.getElementById('feedback');
-            
-            resultDiv.classList.remove('hidden');
-            scoreSpan.textContent = score;
-            
-            if (score === 2) {
-                feedback.textContent = document.querySelector('.tr-lang') 
-                    ? 'Mükemmel! Kuantum fiziğini çok iyi anlıyorsunuz!' 
-                    : 'Excellent! You understand quantum physics very well!';
-            } else if (score === 1) {
-                feedback.textContent = document.querySelector('.tr-lang') 
-                    ? 'Fena değil! Biraz daha çalışırsanız kuantum uzmanı olacaksınız!' 
-                    : 'Not bad! With a little more study, you'll be a quantum expert!';
-            } else {
-                feedback.textContent = document.querySelector('.tr-lang') 
-                    ? 'Kuantum dünyası hakkında daha fazla okumalısınız. Hikayeyi tekrar dinleyin!' 
-                    : 'You should read more about the quantum world. Listen to the story again!';
-            }
+            // Quiz fonksiyonları
+            document.getElementById('check-answers').addEventListener('click', function() {
+                const q1 = document.querySelector('input[name="q1"]:checked')?.value || '0';
+                const q2 = document.querySelector('input[name="q2"]:checked')?.value || '0';
+                
+                const score = parseInt(q1) + parseInt(q2);
+                const resultDiv = document.getElementById('quiz-result');
+                const scoreSpan = document.getElementById('score');
+                const feedback = document.getElementById('feedback');
+                
+                resultDiv.classList.remove('hidden');
+                scoreSpan.textContent = score;
+                
+                // Hangisinin gösterildiğini kontrol et: Türkçe mi İngilizce mi?
+                const isTurkish = !document.querySelector('.tr-lang').classList.contains('hidden');
+                
+                if (score === 2) {
+                    feedback.textContent = isTurkish
+                        ? 'Mükemmel! Kuantum fiziğini çok iyi anlıyorsunuz!' 
+                        : 'Excellent! You understand quantum physics very well!';
+                } else if (score === 1) {
+                    feedback.textContent = isTurkish
+                        ? 'Fena değil! Biraz daha çalışırsanız kuantum uzmanı olacaksınız!' 
+                        : 'Not bad! With a little more study, you'll be a quantum expert!';
+                } else {
+                    feedback.textContent = isTurkish
+                        ? 'Kuantum dünyası hakkında daha fazla okumalısınız. Hikayeyi tekrar dinleyin!' 
+                        : 'You should read more about the quantum world. Listen to the story again!';
+                }
+            });
         });
         
         // Particle background effect
