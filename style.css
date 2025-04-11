@@ -189,3 +189,11 @@ html {
   footer {
     margin-top: auto;
   }
+  /* Bu CSS kodunu sayfanıza ekleyin */
+.unit-list {
+    display: none; /* Başlangıçta tüm listeleri gizle */
+  }
+  
+  .unit-list.open {
+    display: block; /* "open" sınıfına sahip listeleri göster */
+  }

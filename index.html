@@ -286,49 +286,227 @@
         </section>
 
         <!-- Create Story Modal -->
-        <div id="createStoryModal" class="modal modal-closed fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
-            <div class="bg-white rounded-xl max-w-md w-full p-6 relative">
-                <button id="closeModalBtn" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700">
-                    <i class="fas fa-times"></i>
-                </button>
-                <h3 class="text-xl font-bold mb-4 text-gray-800" data-tr="create_story">Yeni Hikaye Oluştur</h3>
+    <div id="createStoryModal" class="modal modal-closed fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
+        <div class="bg-white rounded-xl max-w-md w-full p-6 relative max-h-[90vh] overflow-y-auto">
+            <button id="closeModalBtn" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700">
+                <i class="fas fa-times text-xl"></i>
+            </button>
+            <h3 class="text-xl font-bold mb-4 text-gray-800">Yeni Hikaye Oluştur</h3>
 
-                <div class="mb-4">
-                    <label class="block text-gray-700 text-sm font-medium mb-2" for="storyTitle" data-tr="story_title">Hikaye Başlığı</label>
-                    <input type="text" id="storyTitle" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500">
-                </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-medium mb-2" for="storyTitle">Hikaye Başlığı</label>
+                <input type="text" id="storyTitle" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500">
+            </div>
 
-                <div class="mb-4">
-                    <label class="block text-gray-700 text-sm font-medium mb-2" for="storyCategory" data-tr="category">Kategori</label>
-                    <select id="storyCategory" size="8" class="w-full h-40 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500">
-                        <option value="" data-tr="select_category">Bir kategori seçin</option>
-                        <option value="science" data-tr="science">Bilim</option>
-                        <option value="history" data-tr="history">Tarih</option>
-                        <option value="literature" data-tr="literature">Edebiyat</option>
-                        <option value="math" data-tr="math">Matematik</option>
-                        <option value="technology" data-tr="technology">Teknoloji</option>
-                        <option value="music" data-tr="music">Müzik</option>
-                        <option value="art" data-tr="art">Sanat</option>
-                        <option value="foreign_languages" data-tr="foreign languages">Yabancı Diller</option>
-                    </select>
-                </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-medium mb-2">Kategori Seçin</label>
+                <div class="border border-gray-300 rounded-md overflow-hidden">
+                    <!-- Science Category -->
+                    <div class="category-item border-b border-gray-200 last:border-b-0">
+                        <div class="flex justify-between items-center px-3 py-2 cursor-pointer category-header" data-category="science">
+                            <div class="flex items-center">
+                                <i class="fas fa-flask text-purple-500 mr-2"></i>
+                                <span>Bilim</span>
+                            </div>
+                            <i class="fas fa-chevron-down text-gray-400 text-xs transition-transform"></i>
+                        </div>
+                        <div class="unit-list bg-gray-50">
+                            <div class="px-5 py-2 hover:bg-gray-100 cursor-pointer" data-unit="biology">Biyoloji</div>
+                            <div class="px-5 py-2 hover:bg-gray-100 cursor-pointer" data-unit="chemistry">Kimya</div>
+                            <div class="px-5 py-2 hover:bg-gray-100 cursor-pointer" data-unit="physics">Fizik</div>
+                            <div class="px-5 py-2 hover:bg-gray-100 cursor-pointer" data-unit="astronomy">Astronomi</div>
+                            <div class="px-5 py-2 hover:bg-gray-100 cursor-pointer" data-unit="earth-science">Yer Bilimleri</div>
+                        </div>
+                    </div>
 
-                <div class="mb-4">
-                    <label class="block text-gray-700 text-sm font-medium mb-2" for="storyPrompt" data-tr="story_prompt">Hikaye Konusu</label>
-                    <textarea id="storyPrompt" rows="4" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="Hikayenizin ne hakkında olmasını istediğinizi açıklayın..." data-tr-placeholder="story_placeholder"></textarea>
-                </div>
+                    <!-- History Category -->
+                    <div class="category-item border-b border-gray-200 last:border-b-0">
+                        <div class="flex justify-between items-center px-3 py-2 cursor-pointer category-header" data-category="history">
+                            <div class="flex items-center">
+                                <i class="fas fa-landmark text-purple-500 mr-2"></i>
+                                <span>Tarih</span>
+                            </div>
+                            <i class="fas fa-chevron-down text-gray-400 text-xs transition-transform"></i>
+                        </div>
+                        <div class="unit-list bg-gray-50">
+                            <div class="px-5 py-2 hover:bg-gray-100 cursor-pointer" data-unit="ancient-history">Antik Tarih</div>
+                            <div class="px-5 py-2 hover:bg-gray-100 cursor-pointer" data-unit="medieval-history">Orta Çağ</div>
+                            <div class="px-5 py-2 hover:bg-gray-100 cursor-pointer" data-unit="modern-history">Modern Tarih</div>
+                            <div class="px-5 py-2 hover:bg-gray-100 cursor-pointer" data-unit="turkish-history">Türk Tarihi</div>
+                            <div class="px-5 py-2 hover:bg-gray-100 cursor-pointer" data-unit="world-history">Dünya Tarihi</div>
+                        </div>
+                    </div>
 
-                <div class="flex justify-end space-x-3">
-                    <button id="cancelBtn" class="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-100" data-tr="cancel">
-                        İptal
-                    </button>
-                    <button id="generateBtn" class="gradient-bg text-white px-4 py-2 rounded-md hover:opacity-90" data-tr="generate">
-                        Hikaye Oluştur
-                    </button>
+                    <!-- Literature Category -->
+                    <div class="category-item border-b border-gray-200 last:border-b-0">
+                        <div class="flex justify-between items-center px-3 py-2 cursor-pointer category-header" data-category="literature">
+                            <div class="flex items-center">
+                                <i class="fas fa-book text-purple-500 mr-2"></i>
+                                <span>Edebiyat</span>
+                            </div>
+                            <i class="fas fa-chevron-down text-gray-400 text-xs transition-transform"></i>
+                        </div>
+                        <div class="unit-list bg-gray-50">
+                            <div class="px-5 py-2 hover:bg-gray-100 cursor-pointer" data-unit="turkish-literature">Türk Edebiyatı</div>
+                            <div class="px-5 py-2 hover:bg-gray-100 cursor-pointer" data-unit="world-literature">Dünya Edebiyatı</div>
+                            <div class="px-5 py-2 hover:bg-gray-100 cursor-pointer" data-unit="poetry">Şiir</div>
+                            <div class="px-5 py-2 hover:bg-gray-100 cursor-pointer" data-unit="novel">Roman</div>
+                            <div class="px-5 py-2 hover:bg-gray-100 cursor-pointer" data-unit="drama">Tiyatro</div>
+                        </div>
+                    </div>
+
+                    <!-- Math Category -->
+                    <div class="category-item border-b border-gray-200 last:border-b-0">
+                        <div class="flex justify-between items-center px-3 py-2 cursor-pointer category-header" data-category="math">
+                            <div class="flex items-center">
+                                <i class="fas fa-square-root-alt text-purple-500 mr-2"></i>
+                                <span>Matematik</span>
+                            </div>
+                            <i class="fas fa-chevron-down text-gray-400 text-xs transition-transform"></i>
+                        </div>
+                        <div class="unit-list bg-gray-50">
+                            <div class="px-5 py-2 hover:bg-gray-100 cursor-pointer" data-unit="algebra">Cebir</div>
+                            <div class="px-5 py-2 hover:bg-gray-100 cursor-pointer" data-unit="geometry">Geometri</div>
+                            <div class="px-5 py-2 hover:bg-gray-100 cursor-pointer" data-unit="calculus">Kalkülüs</div>
+                            <div class="px-5 py-2 hover:bg-gray-100 cursor-pointer" data-unit="statistics">İstatistik</div>
+                            <div class="px-5 py-2 hover:bg-gray-100 cursor-pointer" data-unit="trigonometry">Trigonometri</div>
+                        </div>
+                    </div>
+
+                    <!-- Technology Category -->
+                    <div class="category-item border-b border-gray-200 last:border-b-0">
+                        <div class="flex justify-between items-center px-3 py-2 cursor-pointer category-header" data-category="technology">
+                            <div class="flex items-center">
+                                <i class="fas fa-laptop-code text-purple-500 mr-2"></i>
+                                <span>Teknoloji</span>
+                            </div>
+                            <i class="fas fa-chevron-down text-gray-400 text-xs transition-transform"></i>
+                        </div>
+                        <div class="unit-list bg-gray-50">
+                            <div class="px-5 py-2 hover:bg-gray-100 cursor-pointer" data-unit="programming">Programlama</div>
+                            <div class="px-5 py-2 hover:bg-gray-100 cursor-pointer" data-unit="web-development">Web Geliştirme</div>
+                            <div class="px-5 py-2 hover:bg-gray-100 cursor-pointer" data-unit="ai">Yapay Zeka</div>
+                            <div class="px-5 py-2 hover:bg-gray-100 cursor-pointer" data-unit="cybersecurity">Siber Güvenlik</div>
+                            <div class="px-5 py-2 hover:bg-gray-100 cursor-pointer" data-unit="data-science">Veri Bilimi</div>
+                        </div>
+                    </div>
+
+                    <!-- Music Category -->
+                    <div class="category-item border-b border-gray-200 last:border-b-0">
+                        <div class="flex justify-between items-center px-3 py-2 cursor-pointer category-header" data-category="music">
+                            <div class="flex items-center">
+                                <i class="fas fa-music text-purple-500 mr-2"></i>
+                                <span>Müzik</span>
+                            </div>
+                            <i class="fas fa-chevron-down text-gray-400 text-xs transition-transform"></i>
+                        </div>
+                        <div class="unit-list bg-gray-50">
+                            <div class="px-5 py-2 hover:bg-gray-100 cursor-pointer" data-unit="music-theory">Müzik Teorisi</div>
+                            <div class="px-5 py-2 hover:bg-gray-100 cursor-pointer" data-unit="instrumental">Enstrümantal</div>
+                            <div class="px-5 py-2 hover:bg-gray-100 cursor-pointer" data-unit="vocal">Vokal</div>
+                            <div class="px-5 py-2 hover:bg-gray-100 cursor-pointer" data-unit="music-history">Müzik Tarihi</div>
+                            <div class="px-5 py-2 hover:bg-gray-100 cursor-pointer" data-unit="composition">Bestecilik</div>
+                        </div>
+                    </div>
+
+                    <!-- Art Category -->
+                    <div class="category-item border-b border-gray-200 last:border-b-0">
+                        <div class="flex justify-between items-center px-3 py-2 cursor-pointer category-header" data-category="art">
+                            <div class="flex items-center">
+                                <i class="fas fa-palette text-purple-500 mr-2"></i>
+                                <span>Sanat</span>
+                            </div>
+                            <i class="fas fa-chevron-down text-gray-400 text-xs transition-transform"></i>
+                        </div>
+                        <div class="unit-list bg-gray-50">
+                            <div class="px-5 py-2 hover:bg-gray-100 cursor-pointer" data-unit="painting">Resim</div>
+                            <div class="px-5 py-2 hover:bg-gray-100 cursor-pointer" data-unit="sculpture">Heykel</div>
+                            <div class="px-5 py-2 hover:bg-gray-100 cursor-pointer" data-unit="photography">Fotoğrafçılık</div>
+                            <div class="px-5 py-2 hover:bg-gray-100 cursor-pointer" data-unit="digital-art">Dijital Sanat</div>
+                            <div class="px-5 py-2 hover:bg-gray-100 cursor-pointer" data-unit="art-history">Sanat Tarihi</div>
+                        </div>
+                    </div>
+
+                    <!-- Foreign Languages Category -->
+                    <div class="category-item border-b border-gray-200 last:border-b-0">
+                        <div class="flex justify-between items-center px-3 py-2 cursor-pointer category-header" data-category="foreign_languages">
+                            <div class="flex items-center">
+                                <i class="fas fa-language text-purple-500 mr-2"></i>
+                                <span>Yabancı Diller</span>
+                            </div>
+                            <i class="fas fa-chevron-down text-gray-400 text-xs transition-transform"></i>
+                        </div>
+                        <div class="unit-list bg-gray-50">
+                            <div class="px-5 py-2 hover:bg-gray-100 cursor-pointer" data-unit="english">İngilizce</div>
+                            <div class="px-5 py-2 hover:bg-gray-100 cursor-pointer" data-unit="german">Almanca</div>
+                            <div class="px-5 py-2 hover:bg-gray-100 cursor-pointer" data-unit="french">Fransızca</div>
+                            <div class="px-5 py-2 hover:bg-gray-100 cursor-pointer" data-unit="spanish">İspanyolca</div>
+                            <div class="px-5 py-2 hover:bg-gray-100 cursor-pointer" data-unit="chinese">Çince</div>
+                        </div>
+                    </div>
                 </div>
             </div>
+
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-medium mb-2" for="storyPrompt">Hikaye Konusu</label>
+                <textarea id="storyPrompt" rows="4" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="Hikayenizin ne hakkında olmasını istediğinizi açıklayın..."></textarea>
+            </div>
+
+            <div class="flex justify-end space-x-3">
+                <button id="cancelBtn" class="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-100">
+                    İptal
+                </button>
+                <button id="generateBtn" class="gradient-bg text-white px-4 py-2 rounded-md hover:opacity-90">
+                    Hikaye Oluştur
+                </button>
+            </div>
         </div>
-    </main>
+    </div>
+
+    <script>
+        // Toggle unit lists
+        document.querySelectorAll('.category-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const unitList = header.nextElementSibling;
+                const chevron = header.querySelector('.fa-chevron-down');
+                
+                unitList.classList.toggle('open');
+                chevron.classList.toggle('rotate-180');
+            });
+        });
+
+        // Select category/unit
+        document.querySelectorAll('.category-header, .unit-list div').forEach(item => {
+            item.addEventListener('click', function() {
+                // Remove previous selections
+                document.querySelectorAll('.category-header, .unit-list div').forEach(el => {
+                    el.classList.remove('bg-purple-50', 'text-purple-700');
+                });
+                
+                // Add selection style
+                this.classList.add('bg-purple-50', 'text-purple-700');
+                
+                // If it's a unit, also highlight its parent category
+                if (this.parentElement.classList.contains('unit-list')) {
+                    this.parentElement.previousElementSibling.classList.add('bg-purple-50', 'text-purple-700');
+                }
+            });
+        });
+
+        // Modal toggle functionality (for demo purposes)
+        document.getElementById('closeModalBtn').addEventListener('click', () => {
+            document.getElementById('createStoryModal').classList.add('modal-closed');
+        });
+        
+        // For demo - button to show modal
+        const showModalBtn = document.createElement('button');
+        showModalBtn.textContent = 'Show Modal';
+        showModalBtn.className = 'fixed bottom-4 right-4 bg-purple-600 text-white px-4 py-2 rounded-md shadow-lg';
+        showModalBtn.addEventListener('click', () => {
+            document.getElementById('createStoryModal').classList.remove('modal-closed');
+        });
+        document.body.appendChild(showModalBtn);
+    </script>
 
     <!-- Footer -->
     <footer class="bg-gray-800 text-white py-8 w-full mt-auto">
