@@ -8,6 +8,8 @@
     <title>Edu Story AI - Eğitici Hikayeler</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    
     <style>
         .gradient-bg {
             background: linear-gradient(135deg, #6b46c1 0%, #805ad5 100%);
@@ -53,6 +55,7 @@
     </style>
     <link rel="shortcut icon" href="images/favicon.png" type="images/png">
 </head>
+<script src="script.js"></script>
 <body class="min-h-screen flex flex-col bg-gray-50">
     <!-- Header/Navbar -->
     <header class="gradient-bg text-white shadow-md">
@@ -462,52 +465,6 @@
             </div>
         </div>
     </div>
-
-    <script>
-        // Toggle unit lists
-        document.querySelectorAll('.category-header').forEach(header => {
-            header.addEventListener('click', () => {
-                const unitList = header.nextElementSibling;
-                const chevron = header.querySelector('.fa-chevron-down');
-                
-                unitList.classList.toggle('open');
-                chevron.classList.toggle('rotate-180');
-            });
-        });
-
-        // Select category/unit
-        document.querySelectorAll('.category-header, .unit-list div').forEach(item => {
-            item.addEventListener('click', function() {
-                // Remove previous selections
-                document.querySelectorAll('.category-header, .unit-list div').forEach(el => {
-                    el.classList.remove('bg-purple-50', 'text-purple-700');
-                });
-                
-                // Add selection style
-                this.classList.add('bg-purple-50', 'text-purple-700');
-                
-                // If it's a unit, also highlight its parent category
-                if (this.parentElement.classList.contains('unit-list')) {
-                    this.parentElement.previousElementSibling.classList.add('bg-purple-50', 'text-purple-700');
-                }
-            });
-        });
-
-        // Modal toggle functionality (for demo purposes)
-        document.getElementById('closeModalBtn').addEventListener('click', () => {
-            document.getElementById('createStoryModal').classList.add('modal-closed');
-        });
-        
-        // For demo - button to show modal
-        const showModalBtn = document.createElement('button');
-        showModalBtn.textContent = 'Show Modal';
-        showModalBtn.className = 'fixed bottom-4 right-4 bg-purple-600 text-white px-4 py-2 rounded-md shadow-lg';
-        showModalBtn.addEventListener('click', () => {
-            document.getElementById('createStoryModal').classList.remove('modal-closed');
-        });
-        document.body.appendChild(showModalBtn);
-    </script>
-
     <!-- Footer -->
     <footer class="bg-gray-800 text-white py-8 w-full mt-auto">
         <div class="container mx-auto px-4">

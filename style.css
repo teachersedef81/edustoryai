@@ -189,11 +189,31 @@ html {
   footer {
     margin-top: auto;
   }
-  /* Bu CSS kodunu sayfanıza ekleyin */
+
+
+/* Alt kategori listelerini varsayılan olarak gizle */
 .unit-list {
-    display: none; /* Başlangıçta tüm listeleri gizle */
+    max-height: 0; /* Yüksekliği sıfırla */
+    overflow: hidden; /* Taşmayı gizle */
+    transition: max-height 0.3s ease-out; /* Yumuşak geçiş efekti */
+    /* Tailwind'deki bg-gray-50 sınıfı zaten arkaplanı ayarlıyor */
   }
   
+  /* .open sınıfı eklendiğinde listeyi görünür yap */
   .unit-list.open {
-    display: block; /* "open" sınıfına sahip listeleri göster */
+    max-height: 500px; /* İçeriği gösterecek kadar yeterli bir yükseklik (gerekirse artırın) */
+    /* Geçiş efekti zaten yukarıda tanımlandı */
+  }
+  
+  /* Chevron ikonunun dönüş animasyonu için */
+  .category-header .fa-chevron-down {
+    transition: transform 0.3s ease-out; /* Yumuşak dönüş efekti */
+  }
+
+  /* Modal'ın gizlenmesi/gösterilmesi için (modal-closed sınıfı için örnek) */
+  .modal.modal-closed {
+    /* Bu sınıfın nasıl çalıştığına bağlı olarak display: none;, opacity: 0; gibi bir kural olmalı */
+    /* Örneğin: */
+     display: none;
+     /* veya Tailwind kullanıyorsanız: hidden sınıfı eklenip çıkarılabilir */
   }
