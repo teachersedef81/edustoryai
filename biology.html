@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biology Story Cards</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+  
+</head>
+<body class="bg-gray-100 min-h-screen py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+        <h1 class="text-4xl font-bold text-center text-blue-600 mb-2">Biology Stories</h1>
+        <p class="text-center text-gray-600 mb-12">Explore fascinating biology stories in both Turkish and English</p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Story Card 1 -->
+            <div class="story-card bg-white rounded-xl shadow-md overflow-hidden">
+                <div class="card-inner">
+                    <!-- Front Side -->
+                    <div class="card-front">
+                        <div class="h-48 bg-gradient-to-r from-green-400 to-blue-500 relative overflow-hidden">
+                            <div class="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center">
+                                <h2 class="text-white text-2xl font-bold px-4 text-center">The Secret Life of Cells</h2>
+                            </div>
+                            <div class="absolute bottom-4 right-4 bg-white rounded-full p-2 shadow-lg">
+                                <i class="fas fa-exchange-alt text-blue-500"></i>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-center mb-4">
+                                <span class="bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded">Biology</span>
+                                <div class="flex space-x-2">
+                                    <button class="language-tab active px-3 py-1 rounded-full text-sm" data-card="1" data-lang="tr">TR</button>
+                                    <button class="language-tab px-3 py-1 rounded-full text-sm bg-gray-200" data-card="1" data-lang="en">EN</button>
+                                </div>
+                            </div>
+                            <p class="text-gray-700 mb-4 line-clamp-3" id="story-preview-1-tr">
+                                Hücreler, yaşamın temel yapı taşlarıdır. Her biri küçük bir fabrika gibi çalışarak vücudumuzun düzgün çalışmasını sağlar. Bu hikayede, bir hücrenin günlük yaşamını ve diğer hücrelerle olan etkileşimlerini keşfedeceğiz...
+                            </p>
+                            <p class="text-gray-700 mb-4 line-clamp-3 hidden" id="story-preview-1-en">
+                                Cells are the fundamental building blocks of life. Each one works like a tiny factory to keep our bodies functioning properly. In this story, we'll explore the daily life of a cell and its interactions with other cells...
+                            </p>
+                            <div class="flex justify-between items-center">
+                                <button class="read-more-btn px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition" data-card="1">
+                                    Read More <i class="fas fa-book-open ml-2"></i>
+                                </button>
+                                <button class="play-audio-btn p-2 bg-blue-100 text-blue-600 rounded-full hover:bg-blue-200 transition" data-card="1">
+                                    <i class="fas fa-volume-up"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Back Side (Full Story) -->
+                    <div class="card-back bg-white p-6 h-full overflow-y-auto">
+                        <div class="flex justify-between items-center mb-4">
+                            <h2 class="text-xl font-bold" id="story-title-1-tr">Hücrelerin Gizli Yaşamı</h2>
+                            <h2 class="text-xl font-bold hidden" id="story-title-1-en">The Secret Life of Cells</h2>
+                            <button class="close-story-btn p-2 bg-gray-200 rounded-full hover:bg-gray-300 transition">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                        <div class="mb-4" id="full-story-1-tr">
+                            <p class="mb-4">Hücreler, yaşamın temel yapı taşlarıdır. Her biri küçük bir fabrika gibi çalışarak vücudumuzun düzgün çalışmasını sağlar. Bu hikayede, bir hücrenin günlük yaşamını ve diğer hücrelerle olan etkileşimlerini keşfedeceğiz.</p>
+                            <p class="mb-4">Mitokondri, hücrenin enerji santralidir. ATP üreterek hücreye güç sağlar. Ribozomlar ise protein sentezleyerek hücrenin büyümesine ve onarımına yardımcı olur. Hücre zarı, hücreyi korur ve hangi maddelerin içeri gireceğini kontrol eder.</p>
+                            <p class="mb-4">Bir gün, hücre zarı zararlı bir virüs tespit etti. Hemen alarm verdi ve lizozomlar harekete geçti. Lizozomlar, enzimler salgılayarak virüsü parçaladılar. Böylece hücre, potansiyel bir tehditten kurtulmuş oldu.</p>
+                            <p>Hücreler arasındaki bu mükemmel işbirliği sayesinde vücudumuz sağlıklı kalabilir. Her hücre, kendi görevini eksiksiz yerine getirerek yaşamın devamını sağlar.</p>
+                        </div>
+                        <div class="mb-4 hidden" id="full-story-1-en">
+                            <p class="mb-4">Cells are the fundamental building blocks of life. Each one works like a tiny factory to keep our bodies functioning properly. In this story, we'll explore the daily life of a cell and its interactions with other cells.</p>
+                            <p class="mb-4">The mitochondria is the powerhouse of the cell. It produces ATP to provide energy. Ribosomes synthesize proteins to help the cell grow and repair itself. The cell membrane protects the cell and controls what substances can enter.</p>
+                            <p class="mb-4">One day, the cell membrane detected a harmful virus. It immediately sounded the alarm and lysosomes sprang into action. The lysosomes secreted enzymes that broke down the virus, eliminating the potential threat.</p>
+                            <p>Thanks to this perfect cooperation between cells, our bodies can stay healthy. Each cell performs its duties flawlessly to sustain life.</p>
+                        </div>
+                        <div class="flex justify-center mt-6">
+                            <button class="play-audio-btn p-3 bg-blue-500 text-white rounded-full hover:bg-blue-600 transition pulse-animation" data-card="1">
+                                <i class="fas fa-volume-up text-xl"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Story Card 2 -->
+            <div class="story-card bg-white rounded-xl shadow-md overflow-hidden">
+                <div class="card-inner">
+                    <!-- Front Side -->
+                    <div class="card-front">
+                        <div class="h-48 bg-gradient-to-r from-purple-400 to-pink-500 relative overflow-hidden">
+                            <div class="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center">
+                                <h2 class="text-white text-2xl font-bold px-4 text-center">Photosynthesis Adventure</h2>
+                            </div>
+                            <div class="absolute bottom-4 right-4 bg-white rounded-full p-2 shadow-lg">
+                                <i class="fas fa-exchange-alt text-purple-500"></i>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-center mb-4">
+                                <span class="bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded">Biology</span>
+                                <div class="flex space-x-2">
+                                    <button class="language-tab active px-3 py-1 rounded-full text-sm" data-card="2" data-lang="tr">TR</button>
+                                    <button class="language-tab px-3 py-1 rounded-full text-sm bg-gray-200" data-card="2" data-lang="en">EN</button>
+                                </div>
+                            </div>
+                            <p class="text-gray-700 mb-4 line-clamp-3" id="story-preview-2-tr">
+                                Bir yaprağın içindeki kloroplastlar, güneş ışığını yakalayarak şeker üretirler. Bu büyüleyici süreç, tüm yaşamın temelini oluşturur. Bu hikayede, fotosentezin sihirli dünyasına dalacağız...
+                            </p>
+                            <p class="text-gray-700 mb-4 line-clamp-3 hidden" id="story-preview-2-en">
+                                Chloroplasts inside a leaf capture sunlight to produce sugar. This fascinating process forms the foundation of all life. In this story, we'll dive into the magical world of photosynthesis...
+                            </p>
+                            <div class="flex justify-between items-center">
+                                <button class="read-more-btn px-4 py-2 bg-purple-500 text-white rounded-lg hover:bg-purple-600 transition" data-card="2">
+                                    Read More <i class="fas fa-book-open ml-2"></i>
+                                </button>
+                                <button class="play-audio-btn p-2 bg-purple-100 text-purple-600 rounded-full hover:bg-purple-200 transition" data-card="2">
+                                    <i class="fas fa-volume-up"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Back Side (Full Story) -->
+                    <div class="card-back bg-white p-6 h-full overflow-y-auto">
+                        <div class="flex justify-between items-center mb-4">
+                            <h2 class="text-xl font-bold" id="story-title-2-tr">Fotosentez Macerası</h2>
+                            <h2 class="text-xl font-bold hidden" id="story-title-2-en">Photosynthesis Adventure</h2>
+                            <button class="close-story-btn p-2 bg-gray-200 rounded-full hover:bg-gray-300 transition">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                        <div class="mb-4" id="full-story-2-tr">
+                            <p class="mb-4">Bir yaprağın içindeki kloroplastlar, güneş ışığını yakalayarak şeker üretirler. Bu büyüleyici süreç, tüm yaşamın temelini oluşturur. Bu hikayede, fotosentezin sihirli dünyasına dalacağız.</p>
+                            <p class="mb-4">Küçük bir kloroplast, güneşin doğuşuyla birlikte çalışmaya başladı. Fotonları yakalayarak enerjiye dönüştürdü. Bu enerji, su moleküllerini parçalayarak oksijen üretimine yol açtı.</p>
+                            <p class="mb-4">Karbon dioksit molekülleri yaprağın gözeneklerinden içeri girdi. Calvin döngüsü başladı ve karbon atomları şeker moleküllerine dönüştürüldü. Bu şekerler bitkinin büyümesi için gerekli enerjiyi sağladı.</p>
+                            <p>Fotosentez, Dünya'daki yaşam için vazgeçilmez bir süreçtir. Bitkiler bu sayede hem kendi besinlerini üretir hem de atmosferimize oksijen sağlarlar.</p>
+                        </div>
+                        <div class="mb-4 hidden" id="full-story-2-en">
+                            <p class="mb-4">Chloroplasts inside a leaf capture sunlight to produce sugar. This fascinating process forms the foundation of all life. In this story, we'll dive into the magical world of photosynthesis.</p>
+                            <p class="mb-4">A tiny chloroplast began working as the sun rose. It captured photons and converted them into energy. This energy split water molecules, leading to oxygen production.</p>
+                            <p class="mb-4">Carbon dioxide molecules entered through the leaf's stomata. The Calvin cycle began, converting carbon atoms into sugar molecules. These sugars provided the energy needed for the plant's growth.</p>
+                            <p>Photosynthesis is an essential process for life on Earth. Through it, plants produce their own food while providing oxygen to our atmosphere.</p>
+                        </div>
+                        <div class="flex justify-center mt-6">
+                            <button class="play-audio-btn p-3 bg-purple-500 text-white rounded-full hover:bg-purple-600 transition pulse-animation" data-card="2">
+                                <i class="fas fa-volume-up text-xl"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Story Card 3 -->
+            <div class="story-card bg-white rounded-xl shadow-md overflow-hidden">
+                <div class="card-inner">
+                    <!-- Front Side -->
+                    <div class="card-front">
+                        <div class="h-48 bg-gradient-to-r from-yellow-400 to-red-500 relative overflow-hidden">
+                            <div class="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center">
+                                <h2 class="text-white text-2xl font-bold px-4 text-center">DNA's Journey</h2>
+                            </div>
+                            <div class="absolute bottom-4 right-4 bg-white rounded-full p-2 shadow-lg">
+                                <i class="fas fa-exchange-alt text-red-500"></i>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-center mb-4">
+                                <span class="bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded">Biology</span>
+                                <div class="flex space-x-2">
+                                    <button class="language-tab active px-3 py-1 rounded-full text-sm" data-card="3" data-lang="tr">TR</button>
+                                    <button class="language-tab px-3 py-1 rounded-full text-sm bg-gray-200" data-card="3" data-lang="en">EN</button>
+                                </div>
+                            </div>
+                            <p class="text-gray-700 mb-4 line-clamp-3" id="story-preview-3-tr">
+                                DNA, her canlının genetik şifresini taşır. Bu hikayede, bir DNA molekülünün nesiller boyunca aktarılışını ve hücre bölünmesi sırasındaki macerasını takip edeceğiz...
+                            </p>
+                            <p class="text-gray-700 mb-4 line-clamp-3 hidden" id="story-preview-3-en">
+                                DNA carries the genetic code of every living thing. In this story, we'll follow a DNA molecule as it's passed down through generations and its adventure during cell division...
+                            </p>
+                            <div class="flex justify-between items-center">
+                                <button class="read-more-btn px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition" data-card="3">
+                                    Read More <i class="fas fa-book-open ml-2"></i>
+                                </button>
+                                <button class="play-audio-btn p-2 bg-red-100 text-red-600 rounded-full hover:bg-red-200 transition" data-card="3">
+                                    <i class="fas fa-volume-up"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Back Side (Full Story) -->
+                    <div class="card-back bg-white p-6 h-full overflow-y-auto">
+                        <div class="flex justify-between items-center mb-4">
+                            <h2 class="text-xl font-bold" id="story-title-3-tr">DNA'nın Yolculuğu</h2>
+                            <h2 class="text-xl font-bold hidden" id="story-title-3-en">DNA's Journey</h2>
+                            <button class="close-story-btn p-2 bg-gray-200 rounded-full hover:bg-gray-300 transition">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                        <div class="mb-4" id="full-story-3-tr">
+                            <p class="mb-4">DNA, her canlının genetik şifresini taşır. Bu hikayede, bir DNA molekülünün nesiller boyunca aktarılışını ve hücre bölünmesi sırasındaki macerasını takip edeceğiz.</p>
+                            <p class="mb-4">Bir sperm hücresi ile yumurta hücresi birleştiğinde, yeni bir DNA kombinasyonu oluştu. Bu DNA, zigotun çekirdeğinde yerini aldı. Hücre bölünmeye başladıkça, DNA kendini eşledi ve her yeni hücreye tam bir kopyasını verdi.</p>
+                            <p class="mb-4">Mitoz bölünme sırasında, DNA sıkıca paketlenerek kromozomları oluşturdu. Kromozomlar, iğ iplikleri tarafından eşit şekilde iki yavru hücreye dağıtıldı. Böylece genetik bilgi korunmuş oldu.</p>
+                            <p>DNA'nın bu mükemmel kopyalama mekanizması sayesinde, türler nesiller boyunca karakteristik özelliklerini koruyabilirler. Her DNA molekülü, yaşamın devamlılığını sağlayan eşsiz bir bilgi hazinesidir.</p>
+                        </div>
+                        <div class="mb-4 hidden" id="full-story-3-en">
+                            <p class="mb-4">DNA carries the genetic code of every living thing. In this story, we'll follow a DNA molecule as it's passed down through generations and its adventure during cell division.</p>
+                            <p class="mb-4">When a sperm cell united with an egg cell, a new DNA combination was formed. This DNA took its place in the nucleus of the zygote. As the cell began to divide, the DNA replicated itself, giving each new cell a complete copy.</p>
+                            <p class="mb-4">During mitosis, the DNA tightly packed itself into chromosomes. The chromosomes were evenly distributed to two daughter cells by spindle fibers, preserving the genetic information.</p>
+                            <p>Thanks to DNA's perfect replication mechanism, species can maintain their characteristic features through generations. Each DNA molecule is a unique treasure trove of information that ensures the continuity of life.</p>
+                        </div>
+                        <div class="flex justify-center mt-6">
+                            <button class="play-audio-btn p-3 bg-red-500 text-white rounded-full hover:bg-red-600 transition pulse-animation" data-card="3">
+                                <i class="fas fa-volume-up text-xl"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Language switching
+            document.querySelectorAll('.language-tab').forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const cardId = this.getAttribute('data-card');
+                    const lang = this.getAttribute('data-lang');
+                    
+                    // Update active tab
+                    document.querySelectorAll(`.language-tab[data-card="${cardId}"]`).forEach(t => {
+                        t.classList.remove('active');
+                        t.classList.add('bg-gray-200');
+                    });
+                    this.classList.add('active');
+                    this.classList.remove('bg-gray-200');
+                    
+                    // Show correct language content
+                    document.querySelectorAll(`[id^="story-preview-${cardId}-"], [id^="story-title-${cardId}-"], [id^="full-story-${cardId}-"]`).forEach(el => {
+                        el.classList.add('hidden');
+                    });
+                    
+                    document.getElementById(`story-preview-${cardId}-${lang}`).classList.remove('hidden');
+                    document.getElementById(`story-title-${cardId}-${lang}`).classList.remove('hidden');
+                    document.getElementById(`full-story-${cardId}-${lang}`).classList.remove('hidden');
+                });
+            });
+            
+            // Flip card to show full story
+            document.querySelectorAll('.read-more-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const cardId = this.getAttribute('data-card');
+                    const card = this.closest('.story-card');
+                    card.classList.add('card-flipped');
+                });
+            });
+            
+            // Close full story view
+            document.querySelectorAll('.close-story-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const card = this.closest('.story-card');
+                    card.classList.remove('card-flipped');
+                });
+            });
+            
+            // Text-to-speech functionality
+            document.querySelectorAll('.play-audio-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const cardId = this.getAttribute('data-card');
+                    const card = this.closest('.story-card');
+                    const isFlipped = card.classList.contains('card-flipped');
+                    
+                    // Determine current language
+                    let currentLang = 'tr';
+                    if (!document.querySelector(`.language-tab[data-card="${cardId}"].active`).classList.contains('active')) {
+                        currentLang = 'en';
+                    }
+                    
+                    let textToSpeak = '';
+                    if (isFlipped) {
+                        // Full story mode
+                        const title = document.getElementById(`story-title-${cardId}-${currentLang}`).textContent;
+                        const story = document.getElementById(`full-story-${cardId}-${currentLang}`).textContent;
+                        textToSpeak = `${title}. ${story}`;
+                    } else {
+                        // Preview mode
+                        textToSpeak = document.getElementById(`story-preview-${cardId}-${currentLang}`).textContent;
+                    }
+                    
+                    // Speech synthesis
+                    if ('speechSynthesis' in window) {
+                        const utterance = new SpeechSynthesisUtterance();
+                        utterance.text = textToSpeak;
+                        
+                        if (currentLang === 'tr') {
+                            utterance.lang = 'tr-TR';
+                        } else {
+                            utterance.lang = 'en-US';
+                        }
+                        
+                        // Add pulse animation while speaking
+                        this.classList.add('animate-pulse');
+                        utterance.onend = function() {
+                            btn.classList.remove('animate-pulse');
+                        };
+                        
+                        speechSynthesis.speak(utterance);
+                    } else {
+                        alert('Text-to-speech is not supported in your browser.');
+                    }
+                });
+            });
+            
+            // Flip card back when clicking outside on mobile
+            document.addEventListener('click', function(e) {
+                if (window.innerWidth <= 768 && 
+                    !e.target.closest('.card-back') && 
+                    !e.target.closest('.read-more-btn') &&
+                    document.querySelector('.card-flipped')) {
+                    document.querySelector('.card-flipped').classList.remove('card-flipped');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

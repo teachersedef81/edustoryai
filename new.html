@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biology Story Cards</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gray-100 min-h-screen py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+        <h1 class="text-4xl font-bold text-center text-blue-600 mb-2">Biology Stories</h1>
+        <p class="text-center text-gray-600 mb-12">Explore fascinating biology stories in both Turkish and English</p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Story Card 1 -->
+            <div class="story-card bg-white rounded-xl shadow-md overflow-hidden" data-story="1">
+                <div class="h-48 bg-gradient-to-r from-green-400 to-blue-500 relative overflow-hidden">
+                    <div class="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center">
+                        <h2 class="text-white text-2xl font-bold px-4 text-center">The Secret Life of Cells</h2>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <div class="flex justify-between items-center mb-4">
+                        <span class="bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded">Biology</span>
+                        <div class="flex space-x-2">
+                            <button class="language-tab active px-3 py-1 rounded-full text-sm" data-card="1" data-lang="tr">TR</button>
+                            <button class="language-tab px-3 py-1 rounded-full text-sm bg-gray-200" data-card="1" data-lang="en">EN</button>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 mb-4 line-clamp-3" id="story-preview-1-tr">
+                        Hücreler, yaşamın temel yapı taşlarıdır. Her biri küçük bir fabrika gibi çalışarak vücudumuzun düzgün çalışmasını sağlar. Bu hikayede, bir hücrenin günlük yaşamını ve diğer hücrelerle olan etkileşimlerini keşfedeceğiz...
+                    </p>
+                    <p class="text-gray-700 mb-4 line-clamp-3 hidden" id="story-preview-1-en">
+                        Cells are the fundamental building blocks of life. Each one works like a tiny factory to keep our bodies functioning properly. In this story, we'll explore the daily life of a cell and its interactions with other cells...
+                    </p>
+                    <div class="flex justify-between items-center">
+                        <button class="read-more-btn px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition" data-card="1">
+                            Read More <i class="fas fa-book-open ml-2"></i>
+                        </button>
+                        <button class="play-audio-btn p-2 bg-blue-100 text-blue-600 rounded-full hover:bg-blue-200 transition" data-card="1">
+                            <i class="fas fa-volume-up"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Story Card 2 -->
+            <div class="story-card bg-white rounded-xl shadow-md overflow-hidden" data-story="2">
+                <div class="h-48 bg-gradient-to-r from-purple-400 to-pink-500 relative overflow-hidden">
+                    <div class="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center">
+                        <h2 class="text-white text-2xl font-bold px-4 text-center">Photosynthesis Adventure</h2>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <div class="flex justify-between items-center mb-4">
+                        <span class="bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded">Biology</span>
+                        <div class="flex space-x-2">
+                            <button class="language-tab active px-3 py-1 rounded-full text-sm" data-card="2" data-lang="tr">TR</button>
+                            <button class="language-tab px-3 py-1 rounded-full text-sm bg-gray-200" data-card="2" data-lang="en">EN</button>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 mb-4 line-clamp-3" id="story-preview-2-tr">
+                        Bir yaprağın içindeki kloroplastlar, güneş ışığını yakalayarak şeker üretirler. Bu büyüleyici süreç, tüm yaşamın temelini oluşturur. Bu hikayede, fotosentezin sihirli dünyasına dalacağız...
+                    </p>
+                    <p class="text-gray-700 mb-4 line-clamp-3 hidden" id="story-preview-2-en">
+                        Chloroplasts inside a leaf capture sunlight to produce sugar. This fascinating process forms the foundation of all life. In this story, we'll dive into the magical world of photosynthesis...
+                    </p>
+                    <div class="flex justify-between items-center">
+                        <button class="read-more-btn px-4 py-2 bg-purple-500 text-white rounded-lg hover:bg-purple-600 transition" data-card="2">
+                            Read More <i class="fas fa-book-open ml-2"></i>
+                        </button>
+                        <button class="play-audio-btn p-2 bg-purple-100 text-purple-600 rounded-full hover:bg-purple-200 transition" data-card="2">
+                            <i class="fas fa-volume-up"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Story Card 3 -->
+            <div class="story-card bg-white rounded-xl shadow-md overflow-hidden" data-story="3">
+                <div class="h-48 bg-gradient-to-r from-yellow-400 to-red-500 relative overflow-hidden">
+                    <div class="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center">
+                        <h2 class="text-white text-2xl font-bold px-4 text-center">DNA's Journey</h2>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <div class="flex justify-between items-center mb-4">
+                        <span class="bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded">Biology</span>
+                        <div class="flex space-x-2">
+                            <button class="language-tab active px-3 py-1 rounded-full text-sm" data-card="3" data-lang="tr">TR</button>
+                            <button class="language-tab px-3 py-1 rounded-full text-sm bg-gray-200" data-card="3" data-lang="en">EN</button>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 mb-4 line-clamp-3" id="story-preview-3-tr">
+                        DNA, her canlının genetik şifresini taşır. Bu hikayede, bir DNA molekülünün nesiller boyunca aktarılışını ve hücre bölünmesi sırasındaki macerasını takip edeceğiz...
+                    </p>
+                    <p class="text-gray-700 mb-4 line-clamp-3 hidden" id="story-preview-3-en">
+                        DNA carries the genetic code of every living thing. In this story, we'll follow a DNA molecule as it's passed down through generations and its adventure during cell division...
+                    </p>
+                    <div class="flex justify-between items-center">
+                        <button class="read-more-btn px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition" data-card="3">
+                            Read More <i class="fas fa-book-open ml-2"></i>
+                        </button>
+                        <button class="play-audio-btn p-2 bg-red-100 text-red-600 rounded-full hover:bg-red-200 transition" data-card="3">
+                            <i class="fas fa-volume-up"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Full Story Pages -->
+    <!-- Story 1 Full Page -->
+    <div id="full-story-1" class="full-story-container">
+        <div class="max-w-4xl mx-auto py-10 px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
+                <div class="h-64 bg-gradient-to-r from-green-400 to-blue-500 relative overflow-hidden">
+                    <div class="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center">
+                        <h1 class="text-white text-4xl font-bold px-4 text-center" id="full-title-1-tr">Hücrelerin Gizli Yaşamı</h1>
+                        <h1 class="text-white text-4xl font-bold px-4 text-center hidden" id="full-title-1-en">The Secret Life of Cells</h1>
+                    </div>
+                    <button class="close-story-btn absolute top-6 right-6 bg-white rounded-full p-3 shadow-lg hover:bg-gray-100 transition">
+                        <i class="fas fa-times text-gray-800"></i>
+                    </button>
+                </div>
+                <div class="p-8">
+                    <div class="flex justify-between items-center mb-6">
+                        <span class="bg-green-100 text-green-800 text-sm font-semibold px-3 py-1 rounded">Biology</span>
+                        <div class="flex space-x-3">
+                            <button class="language-tab-full active px-4 py-2 rounded-lg text-sm" data-story="1" data-lang="tr">Türkçe</button>
+                            <button class="language-tab-full px-4 py-2 rounded-lg text-sm bg-gray-200" data-story="1" data-lang="en">English</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Turkish Story Content -->
+                    <div id="full-content-1-tr" class="story-content active">
+                        <div class="prose prose-lg max-w-none">
+                            <p class="text-lg mb-6">Hücreler, yaşamın temel yapı taşlarıdır. Her biri küçük bir fabrika gibi çalışarak vücudumuzun düzgün çalışmasını sağlar. Bu hikayede, bir hücrenin günlük yaşamını ve diğer hücrelerle olan etkileşimlerini keşfedeceğiz.</p>
+                            
+                            <h3 class="text-xl font-semibold mb-4 text-blue-600">Hücrenin Bir Günü</h3>
+                            <p class="mb-6">Mitokondri, hücrenin enerji santralidir. Sabahın erken saatlerinde, mitokondriler ATP üretmeye başlar, böylece hücre günlük aktiviteleri için gerekli enerjiyi elde eder. Bu süreçte, glukoz molekülleri parçalanır ve enerji açığa çıkar.</p>
+                            
+                            <p class="mb-6">Ribozomlar ise protein sentezleyerek hücrenin büyümesine ve onarımına yardımcı olur. Gün boyunca, binlerce ribozom durmaksızın çalışarak mRNA'dan gelen talimatları takip eder ve amino asitleri birleştirerek proteinler oluşturur.</p>
+                            
+                            <h3 class="text-xl font-semibold mb-4 text-blue-600">Bir Tehlikeyle Karşılaşma</h3>
+                            <p class="mb-6">Bir gün, hücre zarı zararlı bir virüs tespit etti. Hücre zarı, hücreyi korur ve hangi maddelerin içeri gireceğini kontrol eder. Tehlikeyi fark ettiğinde, hemen alarm verdi ve lizozomlar harekete geçti.</p>
+                            
+                            <p class="mb-6">Lizozomlar, içlerinde bulunan güçlü enzimler sayesinde virüsü parçalamaya başladılar. Bu enzimler, virüsün protein kılıfını ve genetik materyalini parçalayarak etkisiz hale getirdiler. Böylece hücre, potansiyel bir tehditten kurtulmuş oldu.</p>
+                            
+                            <h3 class="text-xl font-semibold mb-4 text-blue-600">Hücreler Arası İletişim</h3>
+                            <p class="mb-6">Hücreler, birbirleriyle sürekli iletişim halindedir. Komşu hücreler, özel reseptörler aracılığıyla kimyasal sinyaller alıp verirler. Bu sinyaller, hücrelerin davranışlarını ve işlevlerini koordine etmelerine yardımcı olur.</p>
+                            
+                            <p class="mb-6">Örneğin, bir doku hasarı durumunda, hasar gören hücreler yardım sinyalleri gönderir. Bu sinyalleri alan bağışıklık sistemi hücreleri, hasarlı bölgeye doğru hareket ederek onarım sürecini başlatırlar.</p>
+                            
+                            <h3 class="text-xl font-semibold mb-4 text-blue-600">Hücre Bölünmesi: Yeni Nesiller</h3>
+                            <p class="mb-6">Bazı hücreler, belirli aralıklarla bölünerek çoğalırlar. Bölünme öncesinde, DNA kendini eşler ve her yavru hücreye tam bir kopya verilir. İğ iplikleri, kromozomları iki kutba çekerek eşit dağılımı sağlar.</p>
+                            
+                            <p>Hücreler arasındaki bu mükemmel işbirliği sayesinde vücudumuz sağlıklı kalabilir. Her hücre, kendi görevini eksiksiz yerine getirerek yaşamın devamını sağlar. Milyarlarca hücrenin uyum içinde çalışması, biyolojinin en etkileyici mucizelerinden biridir.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- English Story Content -->
+                    <div id="full-content-1-en" class="story-content">
+                        <div class="prose prose-lg max-w-none">
+                            <p class="text-lg mb-6">Cells are the fundamental building blocks of life. Each one works like a tiny factory to keep our bodies functioning properly. In this story, we'll explore the daily life of a cell and its interactions with other cells.</p>
+                            
+                            <h3 class="text-xl font-semibold mb-4 text-blue-600">A Day in the Life of a Cell</h3>
+                            <p class="mb-6">The mitochondria is the powerhouse of the cell. In the early morning hours, mitochondria begin producing ATP, providing the cell with the energy needed for daily activities. During this process, glucose molecules are broken down and energy is released.</p>
+                            
+                            <p class="mb-6">Ribosomes synthesize proteins to help the cell grow and repair itself. Throughout the day, thousands of ribosomes work tirelessly, following instructions from mRNA and combining amino acids to form proteins.</p>
+                            
+                            <h3 class="text-xl font-semibold mb-4 text-blue-600">Encountering a Threat</h3>
+                            <p class="mb-6">One day, the cell membrane detected a harmful virus. The cell membrane protects the cell and controls what substances can enter. When it noticed the danger, it immediately sounded the alarm and lysosomes sprang into action.</p>
+                            
+                            <p class="mb-6">The lysosomes, with their powerful enzymes, began breaking down the virus. These enzymes destroyed the virus's protein coat and genetic material, rendering it harmless. Thus, the cell was saved from a potential threat.</p>
+                            
+                            <h3 class="text-xl font-semibold mb-4 text-blue-600">Intercellular Communication</h3>
+                            <p class="mb-6">Cells are constantly communicating with each other. Neighboring cells exchange chemical signals through special receptors. These signals help cells coordinate their behaviors and functions.</p>
+                            
+                            <p class="mb-6">For example, in the event of tissue damage, injured cells send out distress signals. Immune system cells that receive these signals move toward the damaged area to initiate the repair process.</p>
+                            
+                            <h3 class="text-xl font-semibold mb-4 text-blue-600">Cell Division: New Generations</h3>
+                            <p class="mb-6">Some cells divide and multiply at regular intervals. Before division, DNA replicates itself and each daughter cell receives a complete copy. Spindle fibers pull chromosomes to opposite poles, ensuring equal distribution.</p>
+                            
+                            <p>Thanks to this perfect cooperation between cells, our bodies can stay healthy. Each cell performs its duties flawlessly to sustain life. The harmonious work of billions of cells is one of the most impressive miracles of biology.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex justify-center mt-10">
+                        <button class="play-full-audio-btn p-4 bg-blue-500 text-white rounded-full hover:bg-blue-600 transition pulse-animation shadow-lg" data-story="1">
+                            <i class="fas fa-volume-up text-xl"></i>
+                            <span class="ml-2" id="audio-btn-text-1-tr">Sesli Dinle</span>
+                            <span class="ml-2 hidden" id="audio-btn-text-1-en">Listen</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Story 2 Full Page -->
+    <div id="full-story-2" class="full-story-container">
+        <div class="max-w-4xl mx-auto py-10 px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
+                <div class="h-64 bg-gradient-to-r from-purple-400 to-pink-500 relative overflow-hidden">
+                    <div class="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center">
+                        <h1 class="text-white text-4xl font-bold px-4 text-center" id="full-title-2-tr">Fotosentez Macerası</h1>
+                        <h1 class="text-white text-4xl font-bold px-4 text-center hidden" id="full-title-2-en">Photosynthesis Adventure</h1>
+                    </div>
+                    <button class="close-story-btn absolute top-6 right-6 bg-white rounded-full p-3 shadow-lg hover:bg-gray-100 transition">
+                        <i class="fas fa-times text-gray-800"></i>
+                    </button>
+                </div>
+                <div class="p-8">
+                    <div class="flex justify-between items-center mb-6">
+                        <span class="bg-green-100 text-green-800 text-sm font-semibold px-3 py-1 rounded">Biology</span>
+                        <div class="flex space-x-3">
+                            <button class="language-tab-full active px-4 py-2 rounded-lg text-sm" data-story="2" data-lang="tr">Türkçe</button>
+                            <button class="language-tab-full px-4 py-2 rounded-lg text-sm bg-gray-200" data-story="2" data-lang="en">English</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Turkish Story Content -->
+                    <div id="full-content-2-tr" class="story-content active">
+                        <div class="prose prose-lg max-w-none">
+                            <p class="text-lg mb-6">Bir yaprağın içindeki kloroplastlar, güneş ışığını yakalayarak şeker üretirler. Bu büyüleyici süreç, tüm yaşamın temelini oluşturur. Bu hikayede, fotosentezin sihirli dünyasına dalacağız.</p>
+                            
+                            <h3 class="text-xl font-semibold mb-4 text-purple-600">Sabah Güneşiyle Başlangıç</h3>
+                            <p class="mb-6">Küçük bir kloroplast, güneşin doğuşuyla birlikte çalışmaya başladı. İlk güneş ışınları yaprağın üzerine düştüğünde, klorofil molekülleri hemen fotonları yakalamaya başladı. Bu fotonlar, enerjilerini klorofile aktardı ve böylece fotosentezin ilk aşaması olan ışığa bağımlı reaksiyonlar başladı.</p>
+                            
+                            <p class="mb-6">Klorofil tarafından yakalanan bu enerji, elektron taşıma zincirine aktarıldı. Elektronlar, protein kompleksleri arasında ilerledikçe, ATP sentaz enzimi harekete geçti ve ATP molekülleri üretildi. Aynı zamanda, su molekülleri parçalandı; elektronlar ve protonlar açığa çıkarken, oksijen atmosfere salındı.</p>
+                            
+                            <h3 class="text-xl font-semibold mb-4 text-purple-600">Karbon Dioksitin Yolculuğu</h3>
+                            <p class="mb-6">Karbon dioksit molekülleri yaprağın gözeneklerinden (stomalardan) içeri girdi. Bu moleküller, kloroplastın stroma bölgesine ulaştı. Burada, daha önce üretilen ATP ve NADPH molekülleri kullanılarak karbon dioksit molekülleri şekere dönüştürülmeye başlandı.</p>
+                            
+                            <p class="mb-6">Calvin döngüsü olarak bilinen bu süreçte, RuBisCO enzimi kritik bir rol oynadı. Karbon atomları, adım adım işlenerek önce 3-karbonlu, sonra 6-karbonlu şeker moleküllerine dönüştürüldü. Bu şekerler daha sonra nişasta olarak depolandı veya bitkinin diğer kısımlarına taşındı.</p>
+                            
+                            <h3 class="text-xl font-semibold mb-4 text-purple-600">Enerji Dönüşümünün Mucizeleri</h3>
+                            <p class="mb-6">Fotosentez, güneş enerjisini kimyasal enerjiye dönüştüren olağanüstü bir süreçtir. Bu enerji dönüşümü, elektronların yüksek enerji düzeylerinden düşük enerji düzeylerine aktarılması sırasında gerçekleşir. Her adımda serbest kalan enerji, yaşam için gerekli moleküllerin sentezinde kullanılır.</p>
+                            
+                            <p class="mb-6">Yaprakta üretilen şekerler, floem dokusuna yüklenerek bitkinin kök, gövde, çiçek ve meyve gibi diğer kısımlarına taşınır. Bu şekerler, bitkinin büyümesi, yeni hücrelerin oluşumu ve çeşitli metabolik süreçler için gerekli enerjiyi sağlar.</p>
+                            
+                            <h3 class="text-xl font-semibold mb-4 text-purple-600">Yaşam Döngüsünün Tamamlanması</h3>
+                            <p class="mb-6">Akşam olup güneş batmaya başladığında, fotosentez yavaşlar ve sonunda durur. Yaprak stomalarını kapatır ve gece boyunca üretilen şekerleri kullanmaya başlar. Bu süreç, solunum olarak bilinir ve fotosentezin tam tersi gibi işler.</p>
+                            
+                            <p>Fotosentez, Dünya'daki yaşam için vazgeçilmez bir süreçtir. Bitkiler bu sayede hem kendi besinlerini üretir hem de atmosferimize oksijen sağlarlar. Güneşten gelen enerji, bu süreç sayesinde tüm beslenme zincirlerine aktarılır ve yaşam enerjisi olarak kullanılır.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- English Story Content -->
+                    <div id="full-content-2-en" class="story-content">
+                        <div class="prose prose-lg max-w-none">
+                            <p class="text-lg mb-6">Chloroplasts inside a leaf capture sunlight to produce sugar. This fascinating process forms the foundation of all life. In this story, we'll dive into the magical world of photosynthesis.</p>
+                            
+                            <h3 class="text-xl font-semibold mb-4 text-purple-600">Beginning with the Morning Sun</h3>
+                            <p class="mb-6">A tiny chloroplast began working as the sun rose. When the first rays of sunlight fell upon the leaf, chlorophyll molecules immediately began capturing photons. These photons transferred their energy to chlorophyll, initiating the light-dependent reactions, the first stage of photosynthesis.</p>
+                            
+                            <p class="mb-6">This energy captured by chlorophyll was transferred to the electron transport chain. As electrons moved between protein complexes, the ATP synthase enzyme was activated and ATP molecules were produced. Simultaneously, water molecules were split; electrons and protons were released while oxygen was released into the atmosphere.</p>
+                            
+                            <h3 class="text-xl font-semibold mb-4 text-purple-600">The Journey of Carbon Dioxide</h3>
+                            <p class="mb-6">Carbon dioxide molecules entered through the leaf's stomata. These molecules reached the stroma region of the chloroplast. Here, using the previously produced ATP and NADPH molecules, carbon dioxide molecules began to be converted into sugar.</p>
+                            
+                            <p class="mb-6">In this process known as the Calvin cycle, the RuBisCO enzyme played a critical role. Carbon atoms were processed step by step, first into 3-carbon and then into 6-carbon sugar molecules. These sugars were later stored as starch or transported to other parts of the plant.</p>
+                            
+                            <h3 class="text-xl font-semibold mb-4 text-purple-600">Miracles of Energy Conversion</h3>
+                            <p class="mb-6">Photosynthesis is an extraordinary process that converts solar energy into chemical energy. This energy conversion occurs as electrons transfer from high energy levels to low energy levels. The energy released at each step is used in the synthesis of molecules necessary for life.</p>
+                            
+                            <p class="mb-6">Sugars produced in the leaf are loaded into the phloem tissue and transported to other parts of the plant such as roots, stems, flowers, and fruits. These sugars provide the energy needed for the plant's growth, formation of new cells, and various metabolic processes.</p>
+                            
+                            <h3 class="text-xl font-semibold mb-4 text-purple-
